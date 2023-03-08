@@ -9,7 +9,9 @@
     $pcode = $_POST['pcode'];
     $company = $_POST['company'];
     
-    $db = new SQLite3('ActionPoints.db');
+    
+  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+
     $dontAsk = rand(1, 100);
     $insert_stmt = $db->prepare("INSERT INTO company (id, email, pass, cname, city, postal, btype) VALUES ($dontAsk, :email, :password, :cname, :city, :pcode, :company)");
     $insert_stmt->bindValue(':email', $email, SQLITE3_TEXT);
