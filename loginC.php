@@ -5,13 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Connect to database using PDO
-    $servername = "tcp:access4all.database.windows.net,1433";
-    $database = "ActionPoints";
-    $username = "groupthreeadmin@access4all.database.windows.net";
-    $password_db = '$Pa55w0rd';
 
     try {
-        $conn = new PDO("sqlsrv:server=$servername;database=$database", $username, $password_db);
+        $conn = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
+  
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Prepare and execute the query using bound parameters
