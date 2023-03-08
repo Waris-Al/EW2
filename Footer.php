@@ -3,7 +3,7 @@
     <h6>Contact Us</h6>
 <p> Email: Access4All@example.com </p>
             <div>
-                &copy; March 2023 yoyoyo
+                &copy; March 2023 
     </footer>
 </div>
     <!-- Optional JavaScript -->

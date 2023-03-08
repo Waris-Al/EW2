@@ -3,7 +3,7 @@
 <?php 
 function getQs()
 {
-  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $stmt = $db->prepare("SELECT * FROM Checklist WHERE QuestionNo LIKE 'Q%' ORDER BY CAST(SUBSTR(QuestionNo, 2) AS UNSIGNED) DESC LIMIT 1");
   $result = $stmt->execute();
   

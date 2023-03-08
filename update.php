@@ -5,7 +5,7 @@ function getInfo()
 $questionNo = $_GET['questionNo'];
 
     
-  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
 
     $stmt = $db->prepare("SELECT * FROM Checklist WHERE QuestionNo = '$questionNo'");
     $result = $stmt->execute();
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
         $updater = $_POST['username'];
         $col = $_POST['updating'];
         
-  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   
         $stmt = $db->prepare("UPDATE Checklist SET $col = '$updater' WHERE QuestionNo = '$questionNo'");
         $result = $stmt->execute();
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
     {
         $questionNo = $_GET['questionNo'];
         
-  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   
         $stmt = $db->prepare("DELETE FROM Checklist WHERE QuestionNo = '$questionNo'");
         $result = $stmt->execute();

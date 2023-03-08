@@ -77,7 +77,7 @@ input[type="radio"][value="no"]:checked {
 function getQuestions()
 {
   $venueType = $_GET['type'];
-  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $venueType = $db->quote($venueType);  
   $stmt = $db->prepare("SELECT QuestionNo, Question FROM Checklist WHERE (Venue = 'General' OR Venue = '$venueType')");
   $result = $stmt->execute();
