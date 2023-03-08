@@ -3,15 +3,14 @@ session_start(); // start the session
   
 function getQNos() {
   $email = $_GET['company'];
-  $db = new SQLite3('ActionPoints.db');
+  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
   $stmt = $db->prepare("SELECT cname, btype FROM company WHERE email = '$email'");
   $result = $stmt->execute();
-
   $arrayResult = [];
-  while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-      $arrayResult = $row;
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
   }
-  return $arrayResult;
 }
 $result = getQNos();
 $_SESSION['cname'] = $result['cname'];

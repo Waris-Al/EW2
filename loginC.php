@@ -1,26 +1,44 @@
 <?php
-    $db = new SQLite3('ActionPoints.db');
-    session_start();
-    $email=$db->escapeString($_POST['email']);
-  
-    $password=$db->escapeString($_POST['password']);
-   
-    $user_authentication_query="select id,email, btype from company where email='$email' and pass='$password'";
-    $user_authentication_result=$db->query($user_authentication_query);
-    $rows_fetched=$user_authentication_result->numColumns();
-    if($rows_fetched==0){
-        //no user
-        //redirecting to same login page
-        ?>
-        <script>
-            window.alert("Wrong username or password");
-        </script>
-        <meta http-equiv="refresh" content="1;url=login.php" />
-        <?php
-    }else{
-        $row=$user_authentication_result->fetchArray(SQLITE3_ASSOC);
-        $_SESSION['id']=$row['id'];  //user id
-        header("location: LoginGreeting.php?company=$email");
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Connect to database using PDO
+    $servername = "tcp:access4all.database.windows.net,1433";
+    $database = "ActionPoints";
+    $username = "groupthreeadmin@access4all.database.windows.net";
+    $password_db = '$Pa55w0rd';
+
+    try {
+        $conn = new PDO("sqlsrv:server=$servername;database=$database", $username, $password_db);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Prepare and execute the query using bound parameters
+        $stmt = $conn->prepare("SELECT id, email, btype FROM company WHERE email=:email AND pass=:password");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$result) {
+            // Invalid login, redirect to login page with error message
+            $_SESSION['error_message'] = "Wrong username or password";
+            header("Location: login.php");
+            exit();
+        } else {
+            // Valid login, set session variables and redirect to greeting page
+            $_SESSION['id'] = $result['id'];
+            header("Location: LoginGreeting.php?company=$email");
+            exit();
+        }
+
+    } catch(PDOException $e) {
+        // Database connection error, redirect to error page
+        $_SESSION['error_message'] = "Failed to connect to database: " . $e->getMessage();
+        header("Location: error.php");
+        exit();
     }
-    $db->close();
- ?>
+}
+?>

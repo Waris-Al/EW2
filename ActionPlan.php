@@ -4,17 +4,18 @@ require('fpdf/multicellmax.php');
 
 function getQNos()
 {
-  $db = new SQLite3('ActionPoints.db');
+  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
   $stmt = $db->prepare("SELECT * FROM Checklist WHERE QuestionNo LIKE 'Q%' ORDER BY CAST(SUBSTR(QuestionNo, 2) AS UNSIGNED) DESC LIMIT 1");
   $result = $stmt->execute();
   
   $arrayResult = [];
-  while ($row = $result->fetchArray())
-  {
-      $arrayResult [] = $row;
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
   }
   return $arrayResult;
 }
+
 $NumberOfQs = substr((getQNos())[0]['QuestionNo'], 1);
 
 

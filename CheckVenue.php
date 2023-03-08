@@ -1,6 +1,7 @@
 <?php
 try {
-  $db = new PDO('sqlite:ActionPoints.db');
+  $db = new PDO('sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints; Authentication = ActiveDirectoryPassword; UID = groupthreeadmin@access4all.database.windows.net; PWD = $Pa55w0rd');
+  
 } catch (PDOException $e) {
   die("Failed to connect: " . $e->getMessage());
 }
