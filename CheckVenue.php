@@ -1,6 +1,6 @@
 <?php
 try {
-  $db = new PDO('sqlsrv:Server=tcp:access4all.database.windows.net,1433;Database=ActionPoints;User ID=groupthreeadmin;Password=%Pa55w0rd;Encrypt=true;Connection Timeout=30;');
+  $db = new PDO('sqlsrv:Server=tcp:access4all.database.windows.net,1433;Database=ActionPoints;User ID="groupthreeadmin";Password="%Pa55w0rd";Encrypt=true;Connection Timeout=30;');
   
 } catch (PDOException $e) {
   die("Failed to connect: " . $e->getMessage());
