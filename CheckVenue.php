@@ -71,7 +71,7 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters</h2>
+    <h2 class="mb-3">Search Filters oogly boogly</h2>
     <br/><br/>
     
     <form class="form-vertical" action="#" method="post">
