@@ -19,6 +19,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 $searchErr = '';
 $building = '';
 if(isset($_POST['save'])) {
+  echo "testing testing 123";
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
@@ -71,10 +72,10 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters oogly boogly</h2>
+    <h2 class="mb-3">Search Filters oogly</h2>
     <br/><br/>
     
-    <form class="form-vertical" action="#" method="post">
+    <form class="form-vertical" method="post">
     <div class="column">
         <div class="form-group">
 <?php 
