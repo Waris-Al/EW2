@@ -5,27 +5,20 @@ function getCName() {
   $email = $_GET['company'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $stmt = $db->prepare("SELECT cname FROM company WHERE email = '$email'");
-  $result = $stmt->execute();
-  $arrayResult = [];
-  $rows = $stmt->fetchAll();
-  foreach ($rows as $row) {
-      $arrayResult[] = $row;
-  }
-  return $arrayResult;
+  $stmt->execute();
+  $cname = $stmt->fetchColumn();
+  return $cname;
 }
 
 function getBType() {
   $email = $_GET['company'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $stmt = $db->prepare("SELECT btype FROM company WHERE email = '$email'");
-  $result = $stmt->execute();
-  $arrayResult = [];
-  $rows = $stmt->fetchAll();
-  foreach ($rows as $row) {
-      $arrayResult[] = $row;
-  }
-  return $arrayResult;
+  $stmt->execute();
+  $btype = $stmt->fetchColumn();
+  return $btype;
 }
+
 
 $test = getCName();
 $test2 = getBType();
