@@ -79,7 +79,7 @@ function getQuestions()
   $venueType = $_GET['type'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $venueType = $db->quote($venueType);  
-  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = '$venueType')");
+  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
   $result = $stmt->execute();
   $arrayResult = [];
   $rows = $stmt->fetchAll();
