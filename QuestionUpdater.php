@@ -10,6 +10,7 @@ function getQs()
   foreach ($rows as $row) {
       $arrayResult[] = $row;
   }
+  return $arrayResult;
 }
 ?>
 <head>
@@ -18,6 +19,8 @@ function getQs()
 <button type="submit" name="Add">Add</button>
 </form>
 
+
+oooooooooooo
 <body class="bgColor">
 <div class="row">
             <div class="col-10">

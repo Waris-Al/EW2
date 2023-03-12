@@ -19,8 +19,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 $searchErr = '';
 $building = '';
 if(isset($_POST['save'])) {
- echo "search 1: " . $_POST['search1'];
-  echo "other " . $_POST['search2'];
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
@@ -57,6 +55,7 @@ if(isset($_POST['save'])) {
         $searchErr = "Please enter the information";
     }
 }
+
 
 ?>
 <html>
