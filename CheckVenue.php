@@ -21,7 +21,7 @@ $building = '';
 if(isset($_POST['save'])) {
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
-        $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE '$search' OR btype LIKE '$search'");
+        $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search'");
         $stmt->execute(array('$search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
         var_dump($building);
@@ -29,7 +29,7 @@ if(isset($_POST['save'])) {
         echo "search 0";
     } else if(!empty($_POST['search1'])) {
         $search = $_POST['search1'];
-        $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE '$search' OR btype LIKE '$search'");
+        $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search'");
         $stmt->execute(array('$search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo '<pre>';
@@ -82,7 +82,7 @@ echo '</pre>';
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters ighoes</h2>
+    <h2 class="mb-3">Search Filters asasas</h2>
     <br/><br/>
     
     <form class="form-vertical" method="post">
