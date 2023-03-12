@@ -19,7 +19,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 $searchErr = '';
 $building = '';
 if(isset($_POST['save'])) {
-  echo "search is " . $_POST['search'];
+ echo "search 1: " . $_POST['search1'];
+  echo "other " . $_POST['search2'];
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
@@ -75,7 +76,7 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters backbackback</h2>
+    <h2 class="mb-3">Search Filters mannnn</h2>
     <br/><br/>
     
     <form class="form-vertical" method="post">
