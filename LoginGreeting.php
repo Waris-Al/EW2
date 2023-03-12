@@ -11,6 +11,7 @@ function getQNos() {
   foreach ($rows as $row) {
       $arrayResult[] = $row;
   }
+  return $arrayResult;
 }
 $result = getQNos();
 $_SESSION['cname'] = $result['cname'];
