@@ -19,6 +19,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 $searchErr = '';
 $building = '';
 if(isset($_POST['save'])) {
+  echo "search is " . $_POST['search'];
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
