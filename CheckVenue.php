@@ -29,11 +29,13 @@ if(isset($_POST['save'])) {
         echo "search 0";
     } else if(!empty($_POST['search1'])) {
         $search = $_POST['search1'];
-        echo "dskjlhfjsdlkhfdsjlkfhdsjlk " . $search;
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE '$search' OR btype LIKE '$search'");
         $stmt->execute(array('$search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($building);
+        echo '<pre>';
+var_dump($building);
+echo '</pre>';
+
 
         echo "search 1";
     } else if(!empty($_POST['search2'])) {
@@ -80,7 +82,7 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters therewaswas</h2>
+    <h2 class="mb-3">Search Filters ighoes</h2>
     <br/><br/>
     
     <form class="form-vertical" method="post">
