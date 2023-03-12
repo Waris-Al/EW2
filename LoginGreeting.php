@@ -1,10 +1,10 @@
 <?php
 session_start(); // start the session
   
-function getQNos() {
+function getCName() {
   $email = $_GET['company'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-  $stmt = $db->prepare("SELECT cname, btype FROM company WHERE email = '$email'");
+  $stmt = $db->prepare("SELECT cname FROM company WHERE email = '$email'");
   $result = $stmt->execute();
   $arrayResult = [];
   $rows = $stmt->fetchAll();
@@ -13,12 +13,23 @@ function getQNos() {
   }
   return $arrayResult;
 }
-$result = getQNos();
-$_SESSION['cname'] = $result['cname'];
-$_SESSION['btype'] = $result['btype'];
 
-$test = $result['cname'];
-$test2 = $result['btype'];
+function getBType() {
+  $email = $_GET['company'];
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
+  $stmt = $db->prepare("SELECT btype FROM company WHERE email = '$email'");
+  $result = $stmt->execute();
+  $arrayResult = [];
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
+  }
+  return $arrayResult;
+}
+
+$test = getCName();
+$test2 = getBType();
+
 
 
 $_SESSION['loggedin'] = true; // set the 'loggedin' variable to true
