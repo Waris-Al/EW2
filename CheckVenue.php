@@ -19,17 +19,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 $searchErr = '';
 $building = '';
 if(isset($_POST['save'])) {
-  echo "testing testing 123";
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
         $stmt->execute(array(':search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo "search 0";
     } else if(!empty($_POST['search1'])) {
         $search = $_POST['search1'];
         $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
         $stmt->execute(array(':search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo "search 1";
     } else if(!empty($_POST['search2'])) {
         $search = $_POST['search2'];
         $wchair = "wchair";
@@ -49,6 +50,7 @@ if(isset($_POST['save'])) {
             $stmt->execute(array(':check' => '%'.$check.'%'));
             $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        echo "search 2";
     } else {
         $searchErr = "Please enter the information";
     }
