@@ -82,10 +82,10 @@ echo '</pre>';
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters asasas</h2>
+    <h2 class="mb-3">Search Filters popopopopop</h2>
     <br/><br/>
     
-    <form class="form-vertical" method="post">
+    <form class="form-vertical" method="POST">
     <div class="column">
         <div class="form-group">
 <?php 
