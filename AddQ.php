@@ -39,8 +39,8 @@ if (isset($_POST['submit'])) {
     {
         $quest = $_POST['username'];
         $point = $_POST['password'];
-        $ven = $_POST['venue'];
-        $db = new SQLite3('ActionPoints.db');
+        $ven = $_POST['venue']; 
+        $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
         $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue) VALUES ('$lastQ', '$quest', '$point', '$ven')");
         $result = $stmt->execute();
     }
