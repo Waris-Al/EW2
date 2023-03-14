@@ -5,7 +5,7 @@ try {
 } catch (PDOException $e) {
   die("Failed to connect: " . $e->getMessage());
 }
-//session_start();
+session_start();
 
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
@@ -82,7 +82,7 @@ echo '</pre>';
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters popopopopop</h2>
+    <h2 class="mb-3">Search Filters</h2>
     <br/><br/>
     
     <form class="form-vertical" method="POST">

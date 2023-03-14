@@ -22,7 +22,6 @@ $insert_stmt->bindValue(':company', $company, SQLITE3_TEXT);
 $insert_result = $insert_stmt->execute();
 
 if ($insert_result) {
-    echo "User successfully registered";
     $_SESSION['email'] = $email;
     $_SESSION['id'] = $db->lastInsertId(); 
     header("Location: greet.php?company=$cname&type=$company");
