@@ -1,7 +1,6 @@
 <?php
 try {
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-  
 } catch (PDOException $e) {
   die("Failed to connect: " . $e->getMessage());
 }
@@ -21,23 +20,14 @@ $building = '';
 if(isset($_POST['save'])) {
     if(!empty($_POST['search'])) {
         $search = $_POST['search'];
-        $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search'");
-        $stmt->execute(array('$search' => '%'.$search.'%'));
+        $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
+        $stmt->execute(array(':search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($building);
-
-        echo "search 0";
     } else if(!empty($_POST['search1'])) {
         $search = $_POST['search1'];
-        $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search'");
-        $stmt->execute(array('$search' => '%'.$search.'%'));
+        $stmt = $db->prepare("SELECT * FROM company WHERE city LIKE :search OR btype LIKE :search");
+        $stmt->execute(array(':search' => '%'.$search.'%'));
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo '<pre>';
-var_dump($building);
-echo '</pre>';
-
-
-        echo "search 1";
     } else if(!empty($_POST['search2'])) {
         $search = $_POST['search2'];
         $wchair = "wchair";
@@ -57,12 +47,10 @@ echo '</pre>';
             $stmt->execute(array(':check' => '%'.$check.'%'));
             $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        echo "search 2";
     } else {
         $searchErr = "Please enter the information";
     }
 }
-
 
 ?>
 <html>
@@ -82,10 +70,10 @@ echo '</pre>';
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters</h2>
+    <h2 class="mb-3">Search Filters test1</h2>
     <br/><br/>
     
-    <form class="form-vertical" method="POST">
+    <form class="form-vertical" action="#" method="post">
     <div class="column">
         <div class="form-group">
 <?php 
