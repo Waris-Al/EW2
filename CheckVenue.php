@@ -50,6 +50,8 @@ if(isset($_POST['save'])) {
     } else {
         $searchErr = "Please enter the information";
     }
+
+    echo "building is " . $building;
 }
 
 ?>
@@ -70,10 +72,10 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters test 4</h2>
+    <h2 class="mb-3">Search Filters test 9</h2>
     <br/><br/>
     
-    <form class="form-vertical" action="#" method="post">
+    <form class="form-vertical" method="post">
     <div class="column">
         <div class="form-group">
 <?php 
