@@ -20,7 +20,7 @@ function getQs()
 </form>
 
 
-deeznuts
+not des
 <body class="bgColor">
 <div class="row">
             <div class="col-10">
@@ -30,6 +30,7 @@ deeznuts
                         <td>Question</td>
                         <td>Action Point</td>
                         <td>Venue</td>
+                        <td>Good Point</td>
                         <td></td>
                     </thead>
                     <?php
@@ -44,6 +45,7 @@ deeznuts
                         <td><?php echo '"' . $user[$i]['Question'] . '"'?></td>
                         <td><?php echo $user[$i]['ActionPoint']?></td>
                         <td><?php echo $user[$i]['Venue']?></td>
+                        <td><?php echo $user[$i]['GoodPoint']?></td>
                         <td>
                             <form action="update.php?questionNo=<?php echo $user[$i]['QuestionNo']?>" method=get>
                             <input type="hidden" name="questionNo" value="<?php echo $user[$i]['QuestionNo']?>">

@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
                    </div>
 
                    <div class="form-group col-md-6">
-                        <label class="control-label labelFont">Action point</label>
+                        <label class="control-label labelFont">Action point <a title="The way for the business to improve (e.g. 'Add subtitled screenings')"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a></label>
                         <input class="form-control" type="text" name = "password">
                         <span style="color: red"><?php echo $pwderr; ?></span>
                    </div>
