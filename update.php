@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
 Please select what part of this you would like to edit. <br>
 To edit the whole question, we advise deleting this one and <br>
 instead adding a new question closer to how you want it to look. <br>
-<form method="post">
+<form method="post" action = "QuestionUpdater.php">
 <select id="updating" name="updating">
   <option value="Question">Question</option>
   <option value="ActionPoint">Action</option>
@@ -98,7 +98,7 @@ instead adding a new question closer to how you want it to look. <br>
                         <span style="color: red"><?php echo $nameErr; ?></span>
 
                    <div class="form-group col-md-4">
-                        <input class="btn btn-primary" type="submit" value="submit" name ="submit">
+                        <input class="btn btn-primary" type="submit" value="Add" name ="submit">
                    </div>
                         </form>
 <br>
