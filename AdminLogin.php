@@ -59,29 +59,24 @@
   <header>
     <?php include("NavigationBar.php"); ?>
   </header>
-
-  <div class="container h-100 d-flex justify-content-center align-items-center" style = "position:relative; top:120px;">
-    <form action="checkAdminLogin.php" method="POST" autocomplete="off">
-      <div class="form-group">
-        <label class="form-label" for="Username1">username</label>
-        <input type="username" id="Username1" class="form-control" name="username">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="Password1">Password</label>
-        <input type="password" id="Password1" class="form-control" name="password">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="loginCheck">
-        <label class="form-check-label" for="loginCheck">Remember me</label>
-      </div>
-      <div class="form-group" style="display: flex; justify-content: center; margin-top: 20px;">
-  <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; height: 50px;">Log in</button>
+IN THE GHETOOOOO
+  <div class="container h-100 d-flex justify-content-center align-items-center" style="position:relative; top:120px;">
+  <form action="checkAdminLogin.php" method="POST" autocomplete="off">
+    <div class="form-group">
+      <label class="form-label" for="Username1">Username</label>
+      <input type="text" id="Username1" class="form-control" name="username" required>
+      <span class="text-danger">Please enter your username</span>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="Password1">Password</label>
+      <input type="password" id="Password1" class="form-control" name="password" required>
+      <span class="text-danger">Please enter your password</span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
 </div>
-<div class="form-group" style="display: flex; justify-content: center; margin-top: 20px;">
-  <a href="#" style="font-size: 14px;">Forgot password?</a>
-</div>
-
-     
 
 
 
