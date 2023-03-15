@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-ok so this one will be odd but bare with us
+this cant possibly be it
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
@@ -58,7 +58,7 @@ ok so this one will be odd but bare with us
                    </div>
                 </form>
   </body>
+  
+<?php include("Footer.php"); ?>
 </html>
 
-
-<?php include("Footer.php"); ?>
