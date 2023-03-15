@@ -24,9 +24,6 @@ if (isset($_POST['submit'])) {
             if (null !==($array_user))
             {
                 session_start();
-                //starts sessions
-
-                //takes to adminview, where table is when session is active
                 header("Location: QuestionUpdater.php");
                 exit();
             } 
@@ -62,18 +59,18 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-YO0000000
+whynot tho
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
                         <input class="form-control" type="text" name = "username">
-                        <span style="color: white"><?php echo $nameErr; ?></span>
+                        <span style="color: red"><?php echo $nameErr; ?></span>
                    </div>
 
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Password</label>
                         <input class="form-control" type="password" name = "password">
-                        <span style="color: white"><?php echo $pwderr; ?></span>
+                        <span style="color: red"><?php echo $pwderr; ?></span>
                    </div>
                    <div class="form-group col-md-4">
                         <input class="btn btn-primary" type="submit" value="submit" name ="submit">
@@ -81,5 +78,6 @@ YO0000000
                 </form>
   </body>
 </html>
+
 
 <?php include("Footer.php"); ?>
