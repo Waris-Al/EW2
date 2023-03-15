@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
     if($_POST['username'] != null && $_POST['password'] !=null)
     {
           header("Location: checkAdminLogin.php");
+          exit();
     }
 }
 
@@ -40,7 +41,7 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-this cant possibly be it
+thi
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
