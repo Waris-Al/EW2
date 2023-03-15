@@ -59,18 +59,16 @@
   <header>
     <?php include("NavigationBar.php"); ?>
   </header>
-IN THE GHETOOOOO
+IN THE JUNGLE
   <div class="container h-100 d-flex justify-content-center align-items-center" style="position:relative; top:120px;">
   <form action="checkAdminLogin.php" method="POST" autocomplete="off">
     <div class="form-group">
       <label class="form-label" for="Username1">Username</label>
       <input type="text" id="Username1" class="form-control" name="username" required>
-      <span class="text-danger">Please enter your username</span>
     </div>
     <div class="form-group">
       <label class="form-label" for="Password1">Password</label>
       <input type="password" id="Password1" class="form-control" name="password" required>
-      <span class="text-danger">Please enter your password</span>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Login</button>
