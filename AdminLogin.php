@@ -1,65 +1,88 @@
-<?php include("NavigationBar.php"); 
-//admin login is required , as it checks if the username and password match those in the database
 
-//following code is for error messages, if input is incorrect/null
-$nameErr = $pwderr = $invalidMesg = "";
+<?php
 
-if (isset($_POST['submit'])) {
-
-    if ($_POST['username']==null) {
-        $nameErr = "Username is required";
-      } 
-      
-      if ($_POST['password']==null) {
-        $pwderr = "password is required";
-      }
-
-    if($_POST['username'] != null && $_POST['password'] !=null)
-    {
-          header("Location: checkAdminLogin.php");
-          exit();
-    }
-}
 
 ?>
-
+<!DOCTYPE html>
+<html>
 
 <head>
-<link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+    .form-control {
+      border-radius: 40px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      height: 60px;
+      padding-left: 30px;
+      width: 100%;
+    }
+    
+    .form-group {
+      margin-bottom: 40px;
+    }
+    
+    .form-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .btn-primary {
+      background-color: #4285F4;
+      border-radius: 40px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      height: 60px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    
+    .form-check-input {
+      margin-right: 10px;
+    }
+    
+    .form-check-label {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  </style>
 </head>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+
+<body class="bg-light">
+  <header>
+    <?php include("NavigationBar.php"); ?>
+  </header>
+
+  <div class="container h-100 d-flex justify-content-center align-items-center" style = "position:relative; top:120px;">
+    <form action="checkAdminLogin.php" method="POST" autocomplete="off">
+      <div class="form-group">
+        <label class="form-label" for="Username1">username</label>
+        <input type="username" id="Username1" class="form-control" name="username">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="Password1">Password</label>
+        <input type="password" id="Password1" class="form-control" name="password">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="loginCheck">
+        <label class="form-check-label" for="loginCheck">Remember me</label>
+      </div>
+      <div class="form-group" style="display: flex; justify-content: center; margin-top: 20px;">
+  <button type="submit" class="btn btn-primary btn-lg" style="width: 200px; height: 50px;">Log in</button>
+</div>
+<div class="form-group" style="display: flex; justify-content: center; margin-top: 20px;">
+  <a href="#" style="font-size: 14px;">Forgot password?</a>
+</div>
+
+     
 
 
-  </head>
-  <body class="bgColor">
-  <div>
-<?php 
-//this is the input boxes for the login
-?>
-thi
-        <form method="post">
-                   <div class="form-group col-md-6">
-                        <label class="control-label labelFont">Username</label>
-                        <input class="form-control" type="text" name = "username">
-                        <span style="color: red"><?php echo $nameErr; ?></span>
-                   </div>
 
-                   <div class="form-group col-md-6">
-                        <label class="control-label labelFont">Password</label>
-                        <input class="form-control" type="password" name = "password">
-                        <span style="color: red"><?php echo $pwderr; ?></span>
-                   </div>
-                   <div class="form-group col-md-4">
-                        <input class="btn btn-primary" type="submit" value="submit" name ="submit">
-                   </div>
-                </form>
-  </body>
-  
-<?php include("Footer.php"); ?>
-</html>
-
+<?php require("Footer.php");?>
