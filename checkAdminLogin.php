@@ -1,22 +1,41 @@
-<?php 
- function verifyUsers () {
+<?php
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-    if (!isset($_POST['username']) or !isset($_POST['password'])) {
-        return;  // <-- return null;  
+    // Connect to database using PDO
+
+    try {
+        $conn = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
+  
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Prepare and execute the query using bound parameters
+        $stmt = $conn->prepare("SELECT username, password FROM Admin WHERE username=:username AND password=:password");
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$result) {
+            // Invalid login, redirect to login page with error message
+            $_SESSION['error_message'] = "Wrong username or password";
+            header("Location: AdminLogin.php");
+            exit();
+        } else {
+            // Valid login, set session variables and redirect to greeting page
+            $_SESSION['id'] = $result['id'];
+            header("Location: QuestionUpdater.php");
+            exit();
+        }
+
+    } catch(PDOException $e) {
+        // Database connection error, redirect to error page
+        $_SESSION['error_message'] = "Failed to connect to database: " . $e->getMessage();
+        header("Location: error.php");
+        exit();
     }
-
-    $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-    $stmt = $db->prepare('SELECT username FROM Admin WHERE username=:username AND password=:password');
-    $stmt->bindParam(':username', $_POST['username'], SQLITE3_TEXT);
-    $stmt->bindParam(':password', $_POST['password'], SQLITE3_TEXT);
-
-    $result = $stmt->execute();
-
-    $arrayResult = [];
-    $rows = $stmt->fetchAll();
-    foreach ($rows as $row) {
-        $arrayResult[] = $row;
-    }
-    return $arrayResult;
 }
 ?>

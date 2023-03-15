@@ -1,5 +1,4 @@
 <?php include("NavigationBar.php"); 
-require_once("checkAdminLogin.php");
 //admin login is required , as it checks if the username and password match those in the database
 
 //following code is for error messages, if input is incorrect/null
@@ -17,17 +16,7 @@ if (isset($_POST['submit'])) {
 
     if($_POST['username'] != null && $_POST['password'] !=null)
     {
-        $array_user = verifyUsers(); 
-        if ($array_user != null) {
-
-      
-            if (null !==($array_user))
-            {
-                session_start();
-                header("Location: QuestionUpdater.php");
-                exit();
-            } 
-        }
+                header("Location: checkAdminLogin.php");
         if ($array_user != $_POST['username'] or $_POST['password'])
         {
           $nameErr = "Invalid username or password";
@@ -59,7 +48,7 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-whynot tho
+BUT WE DONT KNOW IF ITS RIGHT
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
