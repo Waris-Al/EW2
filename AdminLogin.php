@@ -6,7 +6,7 @@ $nameErr = $pwderr = $invalidMesg = "";
 
 if (isset($_POST['submit'])) {
 
-    if ($_POST['username']=="") {
+    if ($_POST['username']==null) {
         $nameErr = "Username is required";
       } 
       
@@ -16,15 +16,7 @@ if (isset($_POST['submit'])) {
 
     if($_POST['username'] != null && $_POST['password'] !=null)
     {
-                header("Location: checkAdminLogin.php");
-        if ($array_user != $_POST['username'] or $_POST['password'])
-        {
-          $nameErr = "Invalid username or password";
-          $pwderr = "Invalid username or password";
-        }
-        else{
-            $invalidMesg = "Invalid username and password!";
-        }
+          header("Location: checkAdminLogin.php");
     }
 }
 
@@ -48,7 +40,7 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-BUT WE DONT KNOW IF ITS RIGHT
+ok so this one will be odd but bare with us
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
