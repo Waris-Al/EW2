@@ -1,5 +1,4 @@
-<?php session_start();
-
+<?php 
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   // display the navbar with the logout link
