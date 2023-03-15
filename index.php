@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   // display the navbar with the logout link
   include 'NavbarLoggedin.php';
@@ -12,7 +13,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Welcome to Access For All dsfjdsj</title>
+  <title>Welcome to Access For All</title>
   <style>
     /* Add styles for a visually appealing homepage */
     body {
