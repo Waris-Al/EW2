@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
                 //starts sessions
 
                 //takes to adminview, where table is when session is active
-                header("Location: adminview.php");
+                header("Location: QuestionUpdater.php");
                 exit();
             } 
         }
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 <?php 
 //this is the input boxes for the login
 ?>
-YO MILKMAN ALERT
+YO0000000
         <form method="post">
                    <div class="form-group col-md-6">
                         <label class="control-label labelFont">Username</label>
