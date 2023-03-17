@@ -26,9 +26,8 @@ if(isset($_POST['save'])) {
     } else if(!empty($_POST['search1'])) {
       $search = $_POST['search1'];
       $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE :search1");
-      $stmt->execute(array(':search1' => '%' . $search . '%', ':search2' => '%' . $search . '%'));
+      //$stmt->execute(array(':search1' => '%' . $search . '%', ':search2' => '%' . $search . '%'));
       $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      
     } else if(!empty($_POST['search2'])) {
         $search = $_POST['search2'];
         $wchair = "wchair";
@@ -52,7 +51,7 @@ if(isset($_POST['save'])) {
         $searchErr = "Please enter the information";
     }
 
-    echo "building is " . $_POST['search1'];
+    echo "Search query is: " . $stmt->queryString;
 }
 
 ?>
@@ -73,7 +72,7 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters please i want to be done with this</h2>
+    <h2 class="mb-3">Search Filters ARGH</h2>
     <br/><br/>
     
     <form class="form-vertical" method="post">
