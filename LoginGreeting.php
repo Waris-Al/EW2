@@ -23,6 +23,8 @@ function getBType() {
 $test = getCName();
 $test2 = getBType();
 
+$_SESSION['company'] = $test;
+$_SESSION['type'] = $test2;
 
 
 $_SESSION['loggedin'] = true; // set the 'loggedin' variable to true
@@ -65,7 +67,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>Your have successfully Logged In!</h1>
+  <h1>Your have successfully Logged In! Well Done my drilla</h1>
   
   <a href="CheckVenue.php" class="btn">Proceed to Check the Venue</a> 
 
