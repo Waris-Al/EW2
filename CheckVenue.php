@@ -25,7 +25,7 @@ if(isset($_POST['save'])) {
         $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else if(!empty($_POST['search1'])) {
       $search = $_POST['search1'];
-      $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search");
+      $stmt = $db->prepare("SELECT * FROM company WHERE btype LIKE '$search'");
       //$stmt->execute(array(':search1' => '%' . $search . '%', ':search2' => '%' . $search . '%'));
       $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else if(!empty($_POST['search2'])) {
@@ -72,7 +72,7 @@ if(isset($_POST['save'])) {
  
 <body>
     <div class="container">
-    <h2 class="mb-3">Search Filters erm</h2>
+    <h2 class="mb-3">Search Filters SO WHATS THE ISSUE THEN</h2>
     <br/><br/>
     
     <form class="form-vertical" method="post">
