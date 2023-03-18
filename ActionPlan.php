@@ -65,7 +65,7 @@ $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $pointsToImprove .= "\nGood points \n $goodPoints";
 $pointsToImprove .= "\nYour overall Accessibility Score is $totalPercent %";
-$report = $_GET['company'] . ".pdf";
+$report = "Reports/" . $_GET['company'] . ".pdf";
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','',10);
