@@ -40,7 +40,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>You've successfully registered oog</h1>
+  <h1>You've successfully registered sdf</h1>
   <?php 
   $comname = $_GET['company']; 
   $type = $_GET['type']; 
