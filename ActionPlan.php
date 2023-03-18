@@ -65,7 +65,7 @@ $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $pointsToImprove .= "\nGood points \n $goodPoints";
 $pointsToImprove .= "\nYour overall Accessibility Score is $totalPercent %";
-$report = "Reports/" . $_GET['company'] . ".pdf";
+$report = $_GET['company'] . ".pdf";
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','',10);
@@ -79,7 +79,17 @@ $pdf->Image($qr_file);
 
 
 $pdf->Output();
-$pdf->Output('F', $report);
+$reportData = $pdf->Output('', 'S');
+
+// Insert the report into the database
+$companyId = $_GET['company_id'];
+$reportName = $_GET['report_name'];
+$insertQuery = "INSERT INTO Reports (CompanyId, ReportData, ReportName) VALUES (:companyId, :reportData, :reportName)";
+$stmt = $db->prepare($insertQuery);
+$stmt->bindParam(':companyId', $companyId, PDO::PARAM_INT);
+$stmt->bindParam(':reportData', $reportData, PDO::PARAM_LOB);
+$stmt->bindParam(':reportName', $reportName, PDO::PARAM_STR);
+$stmt->execute();
 
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
