@@ -5,25 +5,21 @@ require('fpdf/multicellmax.php');
 function getQNos()
 {
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-  $stmt = $db->prepare("SELECT * FROM Checklist");
-  //$result = $stmt->execute();
-  
-  $arrayResult = [];
-  $rows = $stmt->fetchAll();
-  foreach ($rows as $row) {
-      $arrayResult[] = $row;
-  }
-  return $arrayResult;
+  $stmt = $db->prepare("SELECT COUNT(*) AS NumQs FROM Checklist");
+  $stmt->execute();
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $result['NumQs'];
 }
 
-$NumberOfQs = substr((getQNos())[0]['QuestionNo'], 1);
+$NumberOfQs = getQNos();
+
 
 
 $pointsToImprove = "Action Points \n";
 $goodPoints = "";
 $NumberOfImprovemenets = 0;
 $totalQuestions = $_GET['totalQuestions'];
-$db = new SQLite3('ActionPoints.db');
+$db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
 for ($i=1; $i <= $NumberOfQs; $i++)
 {
 $QuestionInDB = "Q" . strval($i);
@@ -33,11 +29,10 @@ $NumberOfImprovemenets++;
   $stmt = $db->prepare("SELECT ActionPoint FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
   $result = $stmt->execute();
 
-
-  $rows_array = [];
-  while ($row=$result->fetchArray())
-  {
-      $rows_array[]=$row;
+  $arrayResult = [];
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
   }
 
   foreach ($rows_array as $value)
@@ -50,10 +45,10 @@ else if (isset($_GET["$QuestionInDB"]))
   $stmt = $db->prepare("SELECT GoodPoint FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
   $result = $stmt->execute();
 
-    $rows_array = [];
-  while ($row=$result->fetchArray())
-  {
-      $rows_array[]=$row;
+  $arrayResult = [];
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
   }
 
   foreach ($rows_array as $value)
