@@ -40,11 +40,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>You've successfully registered</h1>
+  <h1>You've successfully registered oog</h1>
   <?php 
   $comname = $_GET['company']; 
-  $type = $_GET['type']; ?>
-  
+  $type = $_GET['type']; 
+
+
+$_SESSION['company'] = $comname;
+$_SESSION['type'] = $type;
+
+?>
   <a href="testing.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
 
 
