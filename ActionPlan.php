@@ -35,7 +35,7 @@ $NumberOfImprovemenets++;
       $arrayResult[] = $row;
   }
 
-  foreach ($rows_array as $value)
+  foreach ($arrayResult as $value)
 {
     $pointsToImprove.= "-" . $value['ActionPoint'] . "\n";
 }
@@ -51,7 +51,7 @@ else if (isset($_GET["$QuestionInDB"]))
       $arrayResult[] = $row;
   }
 
-  foreach ($rows_array as $value)
+  foreach ($arrayResult as $value)
 {
     $goodPoints.= "-" . $value['GoodPoint'] . "\n";
 }
@@ -73,7 +73,7 @@ $pdf->Write(5, $pointsToImprove); // Use Write() instead of MultiCell() and set 
 $pdf->Ln(); // Add a blank line
 
 
-$qr_text = 'https://docs.google.com/document/d/1YOHMRAphILRjlTk7r0Getu9h2yKg3Rwp-D9OjCmFpRI/edit'; // change this to the text you want to encode in the QR code
+$qr_text = 'https://youtu.be/LfdCMBCt2r4'; // change this to the text you want to encode in the QR code
 $qr_file = 'qr.png'; // specify the filename for the QR code image
 $pdf->Image($qr_file);
 
