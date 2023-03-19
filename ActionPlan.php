@@ -64,7 +64,7 @@ else if (isset($_GET["$QuestionInDB"]))
 
 
 
-$stmt = $db->prepare("INSERT INTO Reports (Company, ReportData) VALUES (?, ?)");
+$stmt = $db->prepare("INSERT INTO Reports (name, report) VALUES (?, ?)");
 $stmt->bindParam(1, $_GET['company']);
 $stmt->bindParam(2, $pdf_data, PDO::PARAM_LOB);
 $stmt->execute();
@@ -82,8 +82,26 @@ $pdf->Ln(); // Add a blank line
 
 
 $qr_text = 'https://youtu.be/LfdCMBCt2r4'; // change this to the text you want to encode in the QR code
-$qr_file = 'qr.png'; // specify the filename for the QR code image
+$qr_file = "QRcode::png($qr_text)"; // specify the filename for the QR code image
 $pdf->Image($qr_file);
+
+/*
+<?php
+  
+// Include the qrlib file
+include 'phpqrcode/qrlib.php';
+  
+// $text variable has data for QR 
+$text = "https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/";
+  
+// QR Code generation using png()
+// When this function has only the
+// text parameter it directly
+// outputs QR in the browser
+QRcode::png($text);
+?>
+*/
+
 
 
 $pdf->Output();
