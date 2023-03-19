@@ -83,7 +83,7 @@ $pdf->Image($qr_file);
 */
 
 // Generate the QR code image and store it in a temporary file
-$qrtext = 'https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/';
+$qrtext = 'https://en.wikipedia.org/wiki/LeBron_James';
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();

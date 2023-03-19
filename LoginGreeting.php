@@ -67,7 +67,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>Your have successfully Logged In! this MIGHT be chatgpt</h1>
+  <h1>Your have successfully Logged In! this MIGHT be FINALLY</h1>
   
   <a href="CheckVenue.php" class="btn">Proceed to Check the Venue</a> 
 
