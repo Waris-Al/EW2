@@ -63,12 +63,6 @@ else if (isset($_GET["$QuestionInDB"]))
 
 
 
-
-$stmt = $db->prepare("INSERT INTO Reports (name, report) VALUES (?, ?)");
-$stmt->bindParam(1, $_GET['company']);
-$stmt->bindParam(2, $pdf_data, PDO::PARAM_LOB);
-$stmt->execute();
-
 $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $pointsToImprove .= "\nGood points \n $goodPoints";
