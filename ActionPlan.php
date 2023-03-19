@@ -1,6 +1,7 @@
 <?php
 include 'phpqrcode/qrlib.php';
 require('fpdf/multicellmax.php');
+require_once('fpdf/fpdf.php');
 
 function getQNos()
 {
@@ -75,26 +76,17 @@ $pdf->Write(5, $pointsToImprove); // Use Write() instead of MultiCell() and set 
 $pdf->Ln(); // Add a blank line
 
 
+/*undo till this is left
 $qr_text = 'https://youtu.be/LfdCMBCt2r4'; // change this to the text you want to encode in the QR code
-$qr_file = "QRcode::png($qr_text)"; // specify the filename for the QR code image
+$qr_file = 'qr.png'; // specify the filename for the QR code image
 $pdf->Image($qr_file);
-
-/*
-<?php
-  
-// Include the qrlib file
-include 'phpqrcode/qrlib.php';
-  
-// $text variable has data for QR 
-$text = "https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/";
-  
-// QR Code generation using png()
-// When this function has only the
-// text parameter it directly
-// outputs QR in the browser
-QRcode::png($text);
-?>
 */
+
+$qrtext = 'https://youtu.be/LfdCMBCt2r4';
+$qrimage = QRcode::png($qrtext, false, QR_ECLEVEL_Q, 10);
+
+// Add the QR code image to the PDF
+$pdf->Image('data:image/png;base64,' . $qrimage, 50, 50, 50, 50, 'PNG');
 
 
 

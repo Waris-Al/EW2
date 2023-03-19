@@ -1,14 +1,13 @@
 <?php
   
-// Include the qrlib file
-include 'phpqrcode/qrlib.php';
+  include 'phpqrcode/qrlib.php';
+
+  $text = "https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/";
   
-// $text variable has data for QR 
-$text = "https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/";
+  // Specify the filename for the image
+  $filename = 'qrcode.png';
   
-// QR Code generation using png()
-// When this function has only the
-// text parameter it directly
-// outputs QR in the browser
-QRcode::png($text);
+  // Generate the QR code and save it as an image file
+  QRcode::png($text, $filename);
+  
 ?>
