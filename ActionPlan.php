@@ -86,9 +86,16 @@ $pdf->Image($qr_file);
 $qrtext = 'https://www.geeksforgeeks.org/dynamically-generating-a-qr-code-using-php/';
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
+$page_height = $pdf->GetPageHeight();
 
-// Add the QR code image to the PDF
-$pdf->Image($temp_file, 0, 0, 0, 0, 'PNG');
+// Set the distance from the bottom of the page
+$distance_from_bottom = 50;
+
+// Calculate the Y coordinate of the image
+$image_y = $page_height - $distance_from_bottom - 50; // 50 is the height of the image
+
+// Display the image
+$pdf->Image($temp_file, 50, $image_y, 50, 50, 'PNG');
 
 // Delete the temporary file
 unlink($temp_file);
