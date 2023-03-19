@@ -82,12 +82,16 @@ $qr_file = 'qr.png'; // specify the filename for the QR code image
 $pdf->Image($qr_file);
 */
 
+// Generate the QR code image and store it in a temporary file
 $qrtext = 'https://youtu.be/LfdCMBCt2r4';
-$qrimage = QRcode::png($qrtext, false, QR_ECLEVEL_Q, 10);
+$temp_file = tempnam(sys_get_temp_dir(), 'qr_');
+QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 
 // Add the QR code image to the PDF
-$pdf->Image('data:image/png;base64,' . $qrimage, 50, 50, 50, 50, 'PNG');
+$pdf->Image($temp_file, 50, 50, 50, 50, 'PNG');
 
+// Delete the temporary file
+unlink($temp_file);
 
 
 $pdf->Output();
