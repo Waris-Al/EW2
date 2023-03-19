@@ -88,7 +88,7 @@ $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 
 // Add the QR code image to the PDF
-$pdf->Image($temp_file, 'PNG');
+$pdf->Image($temp_file);
 
 // Delete the temporary file
 unlink($temp_file);
