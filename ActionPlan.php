@@ -83,7 +83,7 @@ $pdf->Image($qr_file);
 */
 
 // Generate the QR code image and store it in a temporary file
-$qrtext = "$report";
+$qrtext = 'https://drive.google.com/file/d/1tG2Kf_E1q0iA4JMBaoLPSsZv2b3IRWXe/view?usp=sharing';
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();
