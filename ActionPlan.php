@@ -83,7 +83,8 @@ $pdf->Image($qr_file);
 */
 
 // Generate the QR code image and store it in a temporary file
-$qrtext = 'https://drive.google.com/file/d/1tG2Kf_E1q0iA4JMBaoLPSsZv2b3IRWXe/view?usp=sharing';
+$file_location = "https://everyonewelcome2.azurewebsites.net/" . $report;
+$qrtext = "$file_location";
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();
@@ -111,3 +112,5 @@ echo "\nYour overall Accessibility Score is $totalPercent %";
   */
 ?>
   
+  https://everyonewelcome2.azurewebsites.net/hello%20waris.pdf
+  https://everyonewelcome2.azurewebsites.net/TLOU.pdf
