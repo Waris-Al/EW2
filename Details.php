@@ -89,7 +89,7 @@ input[type="submit"]:hover {
   </head>
   <body>
   <div class="container">
-    <h1>Welcome to our platform huhuhuuhh</h1>
+    <h1>Welcome to our platform</h1>
     <h3>We're glad you're here!</h3>
     <h4>Please register your company below:</h4>
 

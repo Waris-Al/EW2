@@ -1,10 +1,10 @@
 <?php require ("NavigationBar.php"); ?>
 
 <?php
+    $_SESSION['loggedin'] === false;
 session_start();
     session_unset();
     session_destroy();
-    $_SESSION['loggedin'] === false;
 ?>
 <!DOCTYPE html>
 <html>
