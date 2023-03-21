@@ -59,7 +59,6 @@
   <header>
     <?php include("NavigationBar.php"); ?>
   </header>
-IN THE JUNGLE
   <div class="container h-100 d-flex justify-content-center align-items-center" style="position:relative; top:120px;">
   <form action="checkAdminLogin.php" method="POST" autocomplete="off">
     <div class="form-group">

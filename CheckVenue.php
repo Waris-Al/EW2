@@ -5,7 +5,14 @@ try {
   die("Failed to connect: " . $e->getMessage());
 }
 session_start();
-include("Navigationbar.php");
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+  // display the navbar with the logout link
+  include 'NavbarLoggedin.php';
+  $welcomemessage = "Welcome back";
+} else {
+  // display the default navbar
+  include 'NavigationBar.php';
+}
 
 $searchErr = '';
 $building='';
@@ -98,9 +105,9 @@ if(isset($_POST['save']))
           <select class="form-control" id="business-type" name="search1">
             <option value="">All</option>
             <option value="restaurant">Restaurant</option>
-            <option value="venue">Venue</option>
             <option value="cinema">Cinema</option>
             <option value="gym">Gym</option>
+            <option value="General">Other</option>
           </select>
         </div>
       </div>

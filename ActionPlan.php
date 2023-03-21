@@ -112,5 +112,3 @@ echo "\nYour overall Accessibility Score is $totalPercent %";
   */
 ?>
   
-  https://everyonewelcome2.azurewebsites.net/hello%20waris.pdf
-  https://everyonewelcome2.azurewebsites.net/TLOU.pdf

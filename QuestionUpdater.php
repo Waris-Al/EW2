@@ -3,7 +3,7 @@ function getQs()
 {
     $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
 
-  $stmt = $db->prepare('SELECT * FROM Checklist');
+  $stmt = $db->prepare('SELECT * FROM Checklist ORDER BY CAST(SUBSTRING(QuestionNo, 2, 5) AS INTEGER) ASC;');
   $result = $stmt->execute();
   $arrayResult = [];
   $rows = $stmt->fetchAll();
@@ -20,7 +20,6 @@ function getQs()
 </form>
 
 
-not des
 <body class="bgColor">
 <div class="row">
             <div class="col-10">
