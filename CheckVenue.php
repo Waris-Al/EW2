@@ -1,9 +1,4 @@
 <?php
-try {
-  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-} catch (PDOException $e) {
-  die("Failed to connect: " . $e->getMessage());
-}
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   // display the navbar with the logout link
@@ -12,6 +7,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 } else {
   // display the default navbar
   include 'NavigationBar.php';
+}
+try {
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
+} catch (PDOException $e) {
+  die("Failed to connect: " . $e->getMessage());
 }
 
 $searchErr = '';
