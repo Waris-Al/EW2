@@ -43,6 +43,7 @@ $NumberOfImprovemenets++;
 }
 else if (isset($_GET["$QuestionInDB"]))
 {
+  //here add to the type counter thing
   $stmt = $db->prepare("SELECT GoodPoint FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
   $result = $stmt->execute();
 
@@ -63,7 +64,10 @@ else if (isset($_GET["$QuestionInDB"]))
 }
 
 
-
+/*
+so now around here find out if the counter is at least half the total. if it is
+then inserts into questions and stuff
+make sure to get the company ID as well*/
 $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $pointsToImprove .= "\nGood points \n $goodPoints";

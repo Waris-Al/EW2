@@ -74,12 +74,18 @@ input[type="radio"][value="no"]:checked {
 
 
 <?php 
+/*
+in the below function, also select QuestionType
+when a question is answered, remeber its QuestionType
+if over half of the questions of that type are yes, then you can insert it as yes or no in the db
+possibly could do this in the AcitonPlan
+*/
 function getQuestions()
 {
   $venueType = $_GET['type'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $venueType = $db->quote($venueType);  
-  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
+  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue, Type FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
   $result = $stmt->execute();
   $arrayResult = [];
   $rows = $stmt->fetchAll();
@@ -90,7 +96,14 @@ function getQuestions()
 }
 $questions = getQuestions();
 $amountOfQuestions = count($questions);
-
+/*
+code beneath allows you to find out how many types of each questions
+so do it for all different types and then just pass the results through the URL
+$filteredQuestions = array_filter($questions, function($question) {
+  return $question['Type'] == 'Physical accessibility';
+});
+$amountOfHearingQuestions = count($filteredQuestions);
+*/
 
 ?>
 <?php foreach ($questions as $row) : ?>
@@ -102,6 +115,7 @@ $amountOfQuestions = count($questions);
 $totalQ = $amountOfQuestions;
 $questionNo = $row['QuestionNo'];
 $question = $row['Question'];
+$questinType = $row['Type'];
 $idYes = $questionNo . "-yes";
 $idNo = $questionNo . "-no";
 ?>
@@ -116,6 +130,7 @@ $idNo = $questionNo . "-no";
 <br>
 <input type="hidden" name="totalQuestions" value="<?php echo $totalQ ?>">
     <input type="hidden" name="company" value="<?php echo $_GET['company'] ?>">
+    <?php //right here pass in the total type stuff?>
     <div class="submit-container">
     <input type="submit" id="submit-btn" value="Submit" name="Submit">
 </div>
