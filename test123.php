@@ -20,7 +20,21 @@ $filteredQuestions = array_filter($questions, function($question) {
   return $question['Type'] == 'Physical accessibility';
 });
 $amountOfHearingQuestions = count($filteredQuestions);#
-
-
-echo "yo yo yo " . $amountOfHearingQuestions;
 ?>
+<style>
+#container {
+    height: 150px;/*Only for the demo.*/
+    background-color:grey;/*Only for the demo.*/
+    position: relative;
+}
+
+#text {
+    position: absolute;
+    bottom: 60;
+    width: 100%;
+    text-align: center;
+}
+</style>
+<div id="container">
+    <span id="text">Text align to center bottom.</span>
+</div>

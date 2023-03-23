@@ -89,7 +89,7 @@ if(isset($_POST['save']))
 </head>
 <body>
   <div class="container">
-    <h2 class="mb-3">Search Filters</h2>
+    <h2 class="mb-3">Search Filters dhgshg;a;d</h2>
 
     <form action="#" method="post">
       <div class="form-group row">
@@ -157,6 +157,7 @@ if(isset($_POST['save']))
         </thead>
         <tbody>
                 <?php
+                $URL = "https://everyonewelcome2.azurewebsites.net/";
                  if(!$building)
                  {
                     echo '<tr>No data found</tr>';
@@ -167,7 +168,7 @@ if(isset($_POST['save']))
                         ?>
                     <tr>
                         <td><?php echo $key+1;?></td>
-                        <td><a href="<?php echo $value['cname'] . '.pdf'; ?>" target="_blank" onclick="window.open('<?php echo $value['cname'] . '.pdf'; ?>','newwindow','width=800,height=600'); return false;"><?php echo $value['cname'];?></td>
+                        <td><a href="<?php echo $value['cname'] . '.pdf'; ?>" target="_blank" onclick="window.open('<?php echo $URL . $value['cname'] . '.pdf'; ?>','newwindow','width=800,height=600'); return false;"><?php echo $value['cname'];?></td>
                         <td><?php echo $value['city'];?></td>
                         <td><?php echo $value['postal'];?></td>
                         <td><?php echo $value['btype'];?></td>
