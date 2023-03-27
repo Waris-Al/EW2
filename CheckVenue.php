@@ -157,7 +157,7 @@ if(isset($_POST['save']))
         </thead>
         <tbody>
                 <?php
-                $x = 0;
+                
                   $URL = "https://everyonewelcome2.azurewebsites.net/";
                  if(!$building)
                  {

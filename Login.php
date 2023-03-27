@@ -6,7 +6,7 @@ session_start();
         header('location: Alreadylogin.php');
     }
 
-    $x = 0;
+    
 ?>
 <!DOCTYPE html>
 <html>

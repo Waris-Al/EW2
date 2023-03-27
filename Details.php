@@ -7,7 +7,7 @@ session_start();
         header('location: AlreadyAdd.php');
     }
 include("NavigationBar.php");
-$x = 0;
+
 
 ?>
 <!DOCTYPE html>

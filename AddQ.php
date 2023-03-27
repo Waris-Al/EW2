@@ -1,5 +1,5 @@
 <?php include("NavigationBar.php"); ?>
-
+$x = 0;
 <?php 
 function getQs()
 {

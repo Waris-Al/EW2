@@ -33,5 +33,5 @@ $_SESSION['loggedin'] = true;
 $_SESSION['cname'] = $cname;
 $_SESSION['btype'] = $company;
 
-$x = 0;
+
 ?>

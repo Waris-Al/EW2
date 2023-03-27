@@ -1,5 +1,5 @@
 <?php 
-$x = 0;
+
 include("NavigationBar.php");
 function getInfo()
 {

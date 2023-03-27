@@ -3,7 +3,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $x = 0;
+    
     // Connect to database using PDO
 
     try {
