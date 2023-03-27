@@ -6,7 +6,8 @@ session_start();
     if(isset($_SESSION['loggedin'])){
         header('location: AlreadyAdd.php');
     }
-include("NavigationBar.php") 
+include("NavigationBar.php");
+$x = 0;
 
 ?>
 <!DOCTYPE html>

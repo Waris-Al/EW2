@@ -54,6 +54,6 @@ $_SESSION['type'] = $type;
 
 
 
-<?php require("Footer.php");?>
+<?php $x = 0; require("Footer.php");?>
 
 

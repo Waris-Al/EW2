@@ -1,4 +1,5 @@
 <?php 
+$x = 0;
 function getQuestions()
 {
   $venueType = 'cinema';

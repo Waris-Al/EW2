@@ -190,6 +190,6 @@ if (totalChecked == <?php echo $totalQ; ?>) {
 </body>
 </html>
 
-<?php include("Footer.php");?>
+<?php $x = 0; include("Footer.php");?>
 
 

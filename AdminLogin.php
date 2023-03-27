@@ -1,6 +1,5 @@
 
 <?php
-$x = 0;
 
 ?>
 <!DOCTYPE html>

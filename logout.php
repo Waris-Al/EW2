@@ -2,6 +2,8 @@
 session_start();
     session_unset();
     session_destroy();
+
+    $x = 0;
 ?>
 <?php require ("NavigationBar.php"); ?>
 
