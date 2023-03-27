@@ -1,4 +1,4 @@
-<?php include("NavigationBar.php"); $x = 0;
+<?php include("NavigationBar.php"); 
 ?>
 <!DOCTYPE html>
 <html>

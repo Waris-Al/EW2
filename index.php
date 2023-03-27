@@ -122,5 +122,5 @@ p {
 <style>
 
 </style>
-<?php require("Footer.php");?>
+<?php $x=0; require("Footer.php");?>
 

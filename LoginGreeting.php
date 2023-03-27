@@ -78,7 +78,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 
 <?php
 require("Footer.php");
-$x = 0;
 
 //thewar786vids@gmail.com
 
