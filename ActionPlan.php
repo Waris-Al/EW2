@@ -57,8 +57,6 @@ else if (isset($_GET["$QuestionInDB"]))
 {
     $goodPoints.= "-" . $value['GoodPoint'] . "\n";
 }
-//make this its own function that gets called in the else statement
-//then when you go through the results adding all the info to its own table
 }
 
 }

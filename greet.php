@@ -50,7 +50,7 @@ $_SESSION['company'] = $comname;
 $_SESSION['type'] = $type;
 
 ?>
-  <a href="testing.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
+  <a href="SelfAudit.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
 
 
 

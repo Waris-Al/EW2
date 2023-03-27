@@ -1,5 +1,14 @@
-<?php include("NavigationBar.php");
-$totalQs=10;
+<?php session_start();
+
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+  // display the navbar with the logout link
+  include 'NavbarLoggedin.php';
+} else {
+  // display the default navbar
+  include 'NavigationBar.php';
+}
+$amountOfQuestions=10;
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +20,6 @@ $totalQs=10;
   }
 </style>
 
-<head>
-  <title>10 Point Checklist</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     .progress {
@@ -24,56 +31,111 @@ $totalQs=10;
     .progress-bar {
       height: 100%;
     }
+
+    label {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1px solid black;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+input[type="radio"][value="yes"]:checked {
+  background-color: #319C01;
+  border-color: black;
+  color: #319C01;
+}
+
+input[type="radio"][value="no"]:checked {
+  background-color: #D40000;
+  border-color: black;
+  color: #D40000;
+}
+
+
+.submit-container {
+        text-align: left;
+        margin-left: 695px;
+    }
+    
+    .submit-button {
+        margin-top: 10px;
+    }
+
   </style>
-</head>
-<body>
 
 
 <?php 
-function getQuestion($questnum)
+/*
+in the below function, also select QuestionType
+when a question is answered, remeber its QuestionType
+if over half of the questions of that type are yes, then you can insert it as yes or no in the db
+possibly could do this in the AcitonPlan
+*/
+function getQuestions()
 {
-$db = new SQLite3('ActionPoints.db');
-
-  $stmt = $db->prepare("SELECT Question FROM Checklist WHERE QuestionNo = '$questnum'");
+  $venueType = $_GET['type'];
+  $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
+  $venueType = $db->quote($venueType);  
+  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue, Type FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
   $result = $stmt->execute();
-
-
-  $rows_array = [];
-  while ($row=$result->fetchArray())
-  {
-      $rows_array[]=$row;
+  $arrayResult = [];
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
   }
-  return $rows_array;
+  return $arrayResult;
 }
+$questions = getQuestions();
+$amountOfQuestions = count($questions);
+/*
+code beneath allows you to find out how many types of each questions
+so do it for all different types and then just pass the results through the URL
+$filteredQuestions = array_filter($questions, function($question) {
+  return $question['Type'] == 'Physical accessibility';
+});
+$amountOfHearingQuestions = count($filteredQuestions);
+*/
+
 ?>
+<?php foreach ($questions as $row) : ?>
 
 
-  <h1>10 Point Checklist</h1>
-  <form action="ActionPlan.php" method="get">
-    <ul>
-      <li><?php $first_element = reset(getQuestion("Q1")[0]); echo (implode(',', array($first_element))); ?> <a title="Accessibility tab that shows different features (e.g. ramps/lifts)"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a>
-      <input type='radio' id='Q1-yes' name='Q1' value='yes'>Yes
-      <input type='radio' id='Q1-no' name='Q1' value='no'>No
-      </li>
-      <li><?php $first_element = reset(getQuestion("Q2")[0]); echo (implode(',', array($first_element))); ?><input type='radio' id='Q2-yes' name='Q2' value='yes'>Yes<input type='radio' id='Q2-no' name='Q2' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q3")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q3-yes' name='Q3' value='yes'>Yes<input type='radio' id='Q3-no' name='Q3' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q4")[0]); echo (implode(',', array($first_element))); ?><input type='radio' id='Q4-yes' name='Q4' value='yes'>Yes<input type='radio' id='Q4-no' name='Q4' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q5")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q5-yes' name='Q5' value='yes'>Yes<input type='radio' id='Q5-no' name='Q5' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q6")[0]); echo (implode(',', array($first_element))); ?><input type='radio' id='Q6-yes' name='Q6' value='yes'>Yes<input type='radio' id='Q6-no' name='Q6' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q7")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q7-yes' name='Q7' value='yes'>Yes<input type='radio' id='Q7-no' name='Q7' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q8")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q8-yes' name='Q8' value='yes'>Yes<input type='radio' id='Q8-no' name='Q8' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q9")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q9-yes' name='Q9' value='yes'>Yes<input type='radio' id='Q9-no' name='Q9' value='no'>No</li>
-      <li><?php $first_element = reset(getQuestion("Q10")[0]); echo (implode(',', array($first_element))); ?> <input type='radio' id='Q10-yes' name='Q10' value='yes'>Yes<input type='radio' id='Q10-no' name='Q10' value='no'>No</li>   
-      
-      <?php $testingtesting = "Cinema"; ?>
-      <ul id="hidden_fornow" <?php if ($testingtesting == "Cinema") { echo 'style="display:block;"'; $totalQs = 11; } else { echo 'style="display:none;"'; } ?>>
-        <li><?php $first_element = reset(getQuestion("Q11")[0]); echo (implode(',', array($first_element))); ?><input type='radio' id='Q11-yes' name='Q11' value='yes'>Yes<input type='radio' id='Q11-no' name='Q11' value='no'>No</li>
-      </ul>
-      
-      <input type="hidden" name="totalQuestions" value="">
-    </ul>
+<form action="ActionPlan.php" method="get">
+<li>
+<?php 
+$totalQ = $amountOfQuestions;
+$questionNo = $row['QuestionNo'];
+$question = $row['Question'];
+$questinType = $row['Type'];
+$idYes = $questionNo . "-yes";
+$idNo = $questionNo . "-no";
+?>
+<label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question ?></label>
+
+<div style="display: inline-block; text-align: left;">
+    <input type='radio' id='<?php echo $idYes ?>' name='<?php echo $questionNo ?>' value='yes' style="display: inline-block;">Yes
+    <input type='radio' id='<?php echo $idNo ?>' name='<?php echo $questionNo ?>' value='no' style="display: inline-block;">No
+</div>
+  
+<?php endforeach;?>
+<br>
+<input type="hidden" name="totalQuestions" value="<?php echo $totalQ ?>">
+    <input type="hidden" name="company" value="<?php echo $_GET['company'] ?>">
+    <?php //right here pass in the total type stuff?>
+    <div class="submit-container">
     <input type="submit" id="submit-btn" value="Submit" name="Submit">
+</div>
   </form>
+
 
  
 
@@ -85,28 +147,43 @@ $db = new SQLite3('ActionPoints.db');
     </div>
   </div>
   <script>
-    $(document).ready(function() {
-      $(':radio').change(function() {
-        var totalChecked = $(':radio:checked').length;
-        var percentage = (totalChecked / <?php echo $totalQs; ?>) * 100;
-        $('.progress-bar').css('width', percentage + '%');
-        $('.progress-bar').text(percentage + '%');
-        $('.progress-bar').attr('aria-valuenow', percentage);
-      });
-    });
+$(document).ready(function() {
 
-    $('#submit-btn').attr('disabled', true);
+// Check if there are any saved responses in the local storage
+for (var i = 1; i <= <?php echo $totalQ; ?>; i++) {
+  var response = localStorage.getItem("response_" + i);
+  if (response !== null) {
+    $("input[name=" + i + "][value=" + response + "]").prop("checked", true);
+  }
+}
 
 $(':radio').change(function() {
   var totalChecked = $(':radio:checked').length;
-  if (totalChecked == <?php echo $totalQs; ?>) {
-    $('#submit-btn').attr('disabled', false);
-    
-document.querySelector('input[name="totalQuestions"]').value = <?php echo $totalQs; ?>;
-  } else {
-    $('#submit-btn').attr('disabled', true);
-  }
+  var percentage = (totalChecked / <?php echo $totalQ; ?>) * 100;
+  $('.progress-bar').css('width', percentage + '%');
+  $('.progress-bar').text(Math.round(percentage) + '%');
+  $('.progress-bar').attr('aria-valuenow', percentage);
+
+  // Store the response in the local storage
+  var questionNo = $(this).attr("name");
+  var response = $(this).val();
+  localStorage.setItem("response_" + questionNo, response);
 });
+});
+
+// Disable the submit button if not all questions have been answered
+$('#submit-btn').attr('disabled', true);
+
+$(':radio').change(function() {
+var totalChecked = $(':radio:checked').length;
+if (totalChecked == <?php echo $totalQ; ?>) {
+  $('#submit-btn').attr('disabled', false);
+  document.querySelector('input[name="totalQuestions"]').value = <?php echo $totalQ; ?>;
+} else {
+  $('#submit-btn').attr('disabled', true);
+}
+});
+
 
 
   </script>
@@ -114,3 +191,5 @@ document.querySelector('input[name="totalQuestions"]').value = <?php echo $total
 </html>
 
 <?php include("Footer.php");?>
+
+

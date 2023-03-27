@@ -67,12 +67,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>Your have successfully Logged In! sonic</h1>
+  <h1>Your have successfully Logged In! </h1>
   
   <a href="CheckVenue.php" class="btn">Proceed to Check the Venue</a> 
 
 
-  <a href="testing.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
+  <a href="SelfAudit.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
 
 
 

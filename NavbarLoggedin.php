@@ -30,7 +30,7 @@
             <a class="nav-link" href="CheckVenue.php">Check a Location</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="testing.php?company=<?php echo $_SESSION['company'] ?>&type=<?php echo $_SESSION['type'] ?>">Audit</a>
+            <a class="nav-link" href="SelfAudit.php?company=<?php echo $_SESSION['company'] ?>&type=<?php echo $_SESSION['type'] ?>">Audit</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="AboutUs.php">About Us</a>
