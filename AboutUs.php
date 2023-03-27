@@ -1,6 +1,6 @@
 <?php session_start();
 
-
+$x = 0;
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   // display the navbar with the logout link
   include 'NavbarLoggedin.php';
@@ -118,7 +118,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <section class="what-do-get">
     <img src="https://images.pexels.com/photos/4058223/pexels-photo-4058223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 5">
       <div class="what-do-get-content">
-        <h2>What do I get?</h2>
+        <h2>What do I get? </h2>
         <p>Not only does creating an Everybody Welcome listing give you a unique URL to share with your target audiences, it also generates an exclusive QR code to display around your venue, enabling you to provide access information for your visitors when and where they need it.</p>
 
     <?php include("Footer.php");?>
