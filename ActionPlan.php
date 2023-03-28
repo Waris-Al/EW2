@@ -155,7 +155,6 @@ $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $pointsToImprove .= "\nGood points \n $goodPoints";
 $pointsToImprove .= "\nYour overall Accessibility Score is $totalPercent %";
-$pointsToImprove .= "testing yoyoy $physical";
 $report = $_GET['company'] . ".pdf";
 $pdf=new PDF();
 $pdf->AddPage();
@@ -184,11 +183,10 @@ $distance_from_bottom = 50;
 $image_y = $page_height - $distance_from_bottom - 50; // 50 is the height of the image
 
 // Display the image
-$pdf->Image($temp_file, 50, $image_y, 50, 50, 'PNG');
+$pdf->Image($temp_file, 150, $image_y, 50, 50, 'PNG');
 
 // Delete the temporary file
 unlink($temp_file);
-
 
 $pdf->Output();
 $pdf->Output('F', $report);

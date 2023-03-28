@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             // Valid login, set session variables and redirect to greeting page
-            $_SESSION['id'] = $result['id'];
+            $_SESSION['ID'] = $result['id'];
             header("Location: LoginGreeting.php?company=$email");
             exit();
         }
