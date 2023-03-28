@@ -101,7 +101,7 @@ instead adding a new question closer to how you want it to look. <br>
                         <span style="color: red"><?php echo $nameErr; ?></span>
 
                    <div class="form-group col-md-4">
-                        <input class="btn btn-primary" type="submit" value="Add" name ="submit">
+                        <input class="btn btn-primary" type="submit" value="Confirm" name ="submit">
                    </div>
                         </form>
 <br>

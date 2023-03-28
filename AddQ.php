@@ -19,7 +19,7 @@ $lastQ = $lastQ+1;
 $lastQ = "Q" . $lastQ;
 
 
-$nameErr = $pwderr = $venueErr = $invalidMesg = "";
+$nameErr = $pwderr = $venueErr = $GPerr = $invalidMesg = "";
 
 if (isset($_POST['submit'])) {
 
@@ -35,13 +35,18 @@ if (isset($_POST['submit'])) {
         $pwderr = "Enter the venue";
       }
 
-    if($_POST['username'] != null && $_POST['password'] !=null & $_POST['venue'] != null)
+      if ($_POST['GP']==null) {
+        $GPerr = "Enter the Good point";
+      }
+
+    if($_POST['username'] != null && $_POST['password'] !=null && $_POST['venue'] != null && $_POST['GP'] != null)
     {
         $quest = $_POST['username'];
         $point = $_POST['password'];
         $ven = $_POST['venue']; 
+        $GP = $_POST['GP'];
         $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-        $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue) VALUES ('$lastQ', '$quest', '$point', '$ven')");
+        $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue, GoodPoint) VALUES ('$lastQ', '$quest', '$point', '$ven', '$GP')");
         $result = $stmt->execute();
         header("Location: QuestionUpdater.php");
         
@@ -60,6 +65,12 @@ if (isset($_POST['submit'])) {
                         <label class="control-label labelFont">Action point <a title="The way for the business to improve (e.g. 'Add subtitled screenings')"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a></label>
                         <input class="form-control" type="text" name = "password">
                         <span style="color: red"><?php echo $pwderr; ?></span>
+                   </div>
+
+                   <div class="form-group col-md-6">
+                        <label class="control-label labelFont">Good point <a title="If a venue has an accessibility feature, this congratulates them (e.g. 'Audio Described versions of videos available')"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a></label>
+                        <input class="form-control" type="text" name = "GP">
+                        <span style="color: red"><?php echo $GPerr; ?></span>
                    </div>
 
                    <div class="form-group col-md-6">
