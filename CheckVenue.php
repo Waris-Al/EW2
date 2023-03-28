@@ -108,6 +108,7 @@ if(isset($_POST['save']))
             <option value="restaurant">Restaurant</option>
             <option value="cinema">Cinema</option>
             <option value="gym">Gym</option>
+            <option value="Property">Property</option>
             <option value="General">Other</option>
           </select>
         </div>

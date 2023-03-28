@@ -123,6 +123,7 @@ input[type="submit"]:hover {
           <option value="restaurant">Restaurant</option>
           <option value="cinema">Cinema</option>
           <option value="gym">Gym</option>
+          <option value="Property">Property</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Register Now</button>

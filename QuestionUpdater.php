@@ -29,25 +29,27 @@ function getQs()
                         <td>Question</td>
                         <td>Action Point</td>
                         <td>Venue</td>
+                        <td>Type</td>
                         <td>Good Point</td>
                         <td></td>
                     </thead>
                     <?php
 
-                    $user = (getQs());
-                        for ($i=0; $i<count($user); $i++):
+                    $Questions = (getQs());
+                        for ($i=0; $i<count($Questions); $i++):
                     ?>
 
                     <tr>
                     
-                        <td><?php echo $user[$i]['QuestionNo']?></td>
-                        <td><?php echo '"' . $user[$i]['Question'] . '"'?></td>
-                        <td><?php echo $user[$i]['ActionPoint']?></td>
-                        <td><?php echo $user[$i]['Venue']?></td>
-                        <td><?php echo $user[$i]['GoodPoint']?></td>
+                        <td><?php echo $Questions[$i]['QuestionNo']?></td>
+                        <td><?php echo '"' . $Questions[$i]['Question'] . '"'?></td>
+                        <td><?php echo $Questions[$i]['ActionPoint']?></td>
+                        <td><?php echo $Questions[$i]['Venue']?></td>
+                        <td><?php echo $Questions[$i]['Type']?></td>
+                        <td><?php echo $Questions[$i]['GoodPoint']?></td>
                         <td>
-                            <form action="update.php?questionNo=<?php echo $user[$i]['QuestionNo']?>" method=get>
-                            <input type="hidden" name="questionNo" value="<?php echo $user[$i]['QuestionNo']?>">
+                            <form action="update.php?questionNo=<?php echo $Questions[$i]['QuestionNo']?>" method=get>
+                            <input type="hidden" name="questionNo" value="<?php echo $Questions[$i]['QuestionNo']?>">
                             <button type="submit" name="update">Update</button>
                         </form>
                         </td>

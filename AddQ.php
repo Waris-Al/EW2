@@ -69,6 +69,7 @@ if (isset($_POST['submit'])) {
                     <option value="restaurant">Restaurant</option>
                     <option value="cinema">Cinema</option>
                     <option value="gym">Gym</option>
+                    <option value="Property">Property</option>
                   </select>
                   </div>
 
