@@ -97,7 +97,7 @@ instead adding a new question closer to how you want it to look. <br>
   <option value="ActionPoint">Action</option>
   <option value="Venue">Venue</option>
   <option value="Type">Type</option>
-  <option value="AdditonalInfo">Additional Information</option>
+  <option value="AdditionalInfo">Additional Information</option>
   <option value="Delete">Delete</option>
 </select>
 <input class="form-control" type="text" name = "username">
