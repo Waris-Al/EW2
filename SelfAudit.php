@@ -99,11 +99,57 @@ $amountOfQuestions = count($questions);
 /*
 code beneath allows you to find out how many types of each questions
 so do it for all different types and then just pass the results through the URL
+1
+Website Content
+Physical accessibility
+Visual accessibility
+Hearing accessibility
+Sensory accessibility
+Communication accessibility
+
+
+
 $filteredQuestions = array_filter($questions, function($question) {
   return $question['Type'] == 'Physical accessibility';
 });
 $amountOfHearingQuestions = count($filteredQuestions);
 */
+$filterPhysical = array_filter($questions, function($question) {
+  return $question['Type'] == 'Physical accessibility';
+});
+$amountOfPhysicalQuestions = count($filterPhysical);
+
+$filterWeb = array_filter($questions, function($question) {
+  return $question['Type'] == 'Website content';
+});
+$amountOfWebContent = count($filterWeb);
+
+$filterVisual = array_filter($questions, function($question) {
+  return $question['Type'] == 'Visual accessibility';
+});
+$amountOfVisualQuestions = count($filterVisual);
+
+$filterHearing = array_filter($questions, function($question) {
+  return $question['Type'] == 'Hearing accessibility';
+});
+$amountOfHearingQuestions = count($filterHearing);
+
+$filterSensory = array_filter($questions, function($question) {
+  return $question['Type'] == 'Sensory accessibility';
+});
+$amountOfSensoryQuestions = count($filterSensory);
+
+$filterComm = array_filter($questions, function($question) {
+  return $question['Type'] == 'Communication accessibility';
+});
+$amountOfCommQuestions = count($filterComm);
+
+$filterNav = array_filter($questions, function($question) {
+  return $question['Type'] == 'Website navigation';
+});
+$amountOfNavQuestions = count($filterNav);
+
+
 
 ?>
 <?php foreach ($questions as $row) : ?>
@@ -119,7 +165,7 @@ $questinType = $row['Type'];
 $idYes = $questionNo . "-yes";
 $idNo = $questionNo . "-no";
 ?>
-<label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question ?></label>
+<label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question; echo "  " .  $row['Type'];?></label>
 
 <div style="display: inline-block; text-align: left;">
     <input type='radio' id='<?php echo $idYes ?>' name='<?php echo $questionNo ?>' value='yes' style="display: inline-block;">Yes
@@ -130,7 +176,23 @@ $idNo = $questionNo . "-no";
 <br>
 <input type="hidden" name="totalQuestions" value="<?php echo $totalQ ?>">
     <input type="hidden" name="company" value="<?php echo $_GET['company'] ?>">
-    <?php //right here pass in the total type stuff?>
+    <input type="hidden" name="ID" value="<?php echo $_SESSION['ID'] ?>">
+    <input type="hidden" name="physical" value="<?php echo $amountOfPhysicalQuestions ?>">
+    <input type="hidden" name="web" value="<?php echo $amountOfWebContent ?>">
+    <input type="hidden" name="visual" value="<?php echo $amountOfVisualQuestions ?>">
+    <input type="hidden" name="hearing" value="<?php echo $amountOfHearingQuestions ?>">
+    <input type="hidden" name="sensory" value="<?php echo $amountOfSensoryQuestions ?>">
+    <input type="hidden" name="comm" value="<?php echo $amountOfCommQuestions ?>">
+    <input type="hidden" name="nav" value="<?php echo $amountOfNavQuestions ?>">
+    <?php //right here pass in the total type stuff
+    /*
+$amountOfPhysicalQuestions
+$amountOfWebContent
+$amountOfVisualQuestions
+$amountOfHearingQuestions
+$amountOfSensoryQuestions
+$amountOfCommQuestions
+*/?>
     <div class="submit-container">
     <input type="submit" id="submit-btn" value="Submit" name="Submit">
 </div>
@@ -190,6 +252,6 @@ if (totalChecked == <?php echo $totalQ; ?>) {
 </body>
 </html>
 
-<?php include("Footer.php");?>
+<?php  include("Footer.php");?>
 
 
