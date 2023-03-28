@@ -63,6 +63,7 @@ if (isset($_POST['submit'])) {
                         <td>Action Point</td>
                         <td>Venue</td>
                         <td>Type</td>
+                        <td>Additional Information</td>
                     </thead>
                     <?php
 
@@ -77,6 +78,7 @@ if (isset($_POST['submit'])) {
                         <td><?php echo $user[$i]['ActionPoint']?></td>
                         <td><?php echo $user[$i]['Venue']?></td>
                         <td><?php echo $user[$i]['Type']?></td>
+                        <td><?php echo $user[$i]['AdditionalInfo']?></td>
 
                         </tr>
                         <?php endfor ?>
@@ -95,6 +97,7 @@ instead adding a new question closer to how you want it to look. <br>
   <option value="ActionPoint">Action</option>
   <option value="Venue">Venue</option>
   <option value="Type">Type</option>
+  <option value="AdditonalInfo">Additional Information</option>
   <option value="Delete">Delete</option>
 </select>
 <input class="form-control" type="text" name = "username">

@@ -18,8 +18,8 @@ $lastQ = substr((getQs())[0]['QuestionNo'], 1);
 $lastQ = $lastQ+1;
 $lastQ = "Q" . $lastQ;
 
-
-$nameErr = $pwderr = $venueErr = $GPerr = $invalidMesg = "";
+$info = "";
+$nameErr = $pwderr = $venueErr = $GPerr = $infoerr = $invalidMesg = "";
 
 if (isset($_POST['submit'])) {
 
@@ -39,6 +39,15 @@ if (isset($_POST['submit'])) {
         $GPerr = "Enter the Good point";
       }
 
+      
+      if ($_POST['GP']==null) {
+        $GPerr = "Enter the Good point";
+      }
+
+      if ($_POST['info']!=null) {
+        $info = $_POST['info'];
+      }
+
     if($_POST['username'] != null && $_POST['password'] !=null && $_POST['venue'] != null && $_POST['GP'] != null)
     {
         $quest = $_POST['username'];
@@ -46,7 +55,7 @@ if (isset($_POST['submit'])) {
         $ven = $_POST['venue']; 
         $GP = $_POST['GP'];
         $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-        $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue, GoodPoint) VALUES ('$lastQ', '$quest', '$point', '$ven', '$GP')");
+        $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue, GoodPoint, AdditionalInfo) VALUES ('$lastQ', '$quest', '$point', '$ven', '$GP', '$info')");
         $result = $stmt->execute();
         header("Location: QuestionUpdater.php");
         
@@ -72,6 +81,12 @@ if (isset($_POST['submit'])) {
                         <input class="form-control" type="text" name = "GP">
                         <span style="color: red"><?php echo $GPerr; ?></span>
                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="control-label labelFont">Additional Information <a title="Any other context needed for the question (like this!)"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a></label>
+                        <input class="form-control" type="text" name = "info">
+                        <span style="color: red"><?php echo $infoerr; ?></span>
+                    </div>
 
                    <div class="form-group col-md-6">
                    <label class="control-label labelFont">Venue Type</label><br>

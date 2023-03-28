@@ -1,6 +1,6 @@
 <?php session_start();
 
-
+  
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   // display the navbar with the logout link
   include 'NavbarLoggedin.php';
@@ -85,7 +85,7 @@ function getQuestions()
   $venueType = $_GET['type'];
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   $venueType = $db->quote($venueType);  
-  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue, Type FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
+  $stmt = $db->prepare("SELECT QuestionNo, Question, Venue, Type, AdditionalInfo FROM Checklist WHERE (CONVERT(varchar(255), Venue) = 'General' OR CONVERT(varchar(255), Venue) = $venueType)");
   $result = $stmt->execute();
   $arrayResult = [];
   $rows = $stmt->fetchAll();
@@ -106,6 +106,9 @@ Visual accessibility
 Hearing accessibility
 Sensory accessibility
 Communication accessibility
+
+<a title="Accessibility tab that shows different features (e.g. ramps/lifts)"><img src="https://shots.jotform.com/kade/Screenshots/blue_question_mark.png" height="13px"/></a>
+      
 
 
 
@@ -162,16 +165,20 @@ $totalQ = $amountOfQuestions;
 $questionNo = $row['QuestionNo'];
 $question = $row['Question'];
 $questinType = $row['Type'];
+$questInfo = $row['AdditionalInfo'];
 $idYes = $questionNo . "-yes";
 $idNo = $questionNo . "-no";
+$additionalInfo = "<a title='$questInfo'><img src='https://shots.jotform.com/kade/Screenshots/blue_question_mark.png' height='13px'/></a>'";
+    
 ?>
-<label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question; echo "  " .  $row['Type'];?></label>
+<label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question;?></label> <?php if ($questInfo != "")
+{echo $additionalInfo;} ?>
 
 <div style="display: inline-block; text-align: left;">
     <input type='radio' id='<?php echo $idYes ?>' name='<?php echo $questionNo ?>' value='yes' style="display: inline-block;">Yes
     <input type='radio' id='<?php echo $idNo ?>' name='<?php echo $questionNo ?>' value='no' style="display: inline-block;">No
 </div>
-  
+</li>
 <?php endforeach;?>
 <br>
 <input type="hidden" name="totalQuestions" value="<?php echo $totalQ ?>">
