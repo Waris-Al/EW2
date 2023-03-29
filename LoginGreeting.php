@@ -81,7 +81,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   
   <a href="Checkvenuelog.php" class="btn">Proceed to Check the Venue</a> 
 
-  <a href="SelfAudit.php" class="btn">Proceed to Audit</a> 
+  <a href="SelfAudit.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
 
 
 

@@ -42,6 +42,14 @@
             <a class="nav-link" href="AboutUs.php">About Us</a>
           </li>
         </ul>
+
+                
+        <label for="fontsize" style="color: white; margin-right: 10px;">Font size:</label>
+<select id="fontsize" class="form-control-sm" onchange="changeFontSize()" style="width: 80px;">
+  <option value="16" selected >Small</option>
+  <option value="20"  >Medium</option>
+  <option value="24">Large</option>
+</select>
         
       </div>
     </nav>
