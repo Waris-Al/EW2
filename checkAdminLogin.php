@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Valid login, set session variables and redirect to greeting page
             $_SESSION['id'] = $result['id'];
+            $_SESSION['loggedinAdmin'] = true;
             header("Location: QuestionUpdater.php");
             exit();
         }

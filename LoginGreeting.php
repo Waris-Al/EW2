@@ -38,12 +38,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A HUGE Welcome From Everybody Welcome</title>
+  <title>A HUGE Welcome From Access For All</title>
   <style>
-    /* Add styles for a visually appealing index */
+    /* Add styles for a visually appealing homepage */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -64,21 +65,24 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
       text-decoration: none;
       margin-top: 20px;
     }
+
+    body {
+          font-family: 'Alkatra', sans-serif;
+        background: url("https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
   </style>
 </head>
 <body>
-  <h1>Your have successfully Logged In! </h1>
+  <h1>Your have successfully Logged In!</h1>
   
-  <a href="CheckVenue.php" class="btn">Proceed to Check the Venue</a> 
+  <a href="Checkvenuelog.php" class="btn">Proceed to Check the Venue</a> 
+
+  <a href="SelfAudit.php" class="btn">Proceed to Audit</a> 
 
 
-  <a href="SelfAudit.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
 
-
-
-<?php
-require("Footer.php");
-
-//thewar786vids@gmail.com
-
-?>
+<?php require("Footer.php");?>

@@ -14,9 +14,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A HUGE Welcome From Everybody Welcome</title>
+  <title>A HUGE Welcome From Access For All</title>
   <style>
-    /* Add styles for a visually appealing index */
+    /* Add styles for a visually appealing homepage */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -40,20 +40,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>You've successfully registered</h1>
-  <?php 
-  $comname = $_GET['company']; 
-  $type = $_GET['type']; 
-
-
-$_SESSION['company'] = $comname;
-$_SESSION['type'] = $type;
-
-?>
-  <a href="SelfAudit.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
+  <h1>Your Registration has been completed</h1>
+  
+  <a href="SelfAudit.php" class="btn">Proceed to the Audit</a>
 
 
 
 <?php require("Footer.php");?>
+
+
+
 
 

@@ -1,4 +1,11 @@
-<?php include("NavigationBar.php"); 
+<?php session_start();
+if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] === true) {
+  // display the navbar with the logout link
+  include 'navBarAdmin.php';
+} else {
+  // display the default navbar
+  include 'NavigationBar.php';
+}
 function getQs()
 {
     $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");

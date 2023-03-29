@@ -10,13 +10,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A HUGE Welcome From Everybody Welcome</title>
+  <title>A HUGE Welcome From Access For All</title>
   <style>
-    /* Add styles for a visually appealing index */
+    /* Add styles for a visually appealing homepage */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -40,11 +39,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   </style>
 </head>
 <body>
-  <h1>You're already logged in!</h1>
+  <h1>You are already logged in!</h1>
   
   <a href="logout.php" class="btn">Log out</a> 
 
 
+
 <?php require("Footer.php");?>
+
 
 

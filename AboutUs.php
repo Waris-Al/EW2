@@ -11,13 +11,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Everybody Welcome</title>
+    <title>Access and Inclusion UK</title>
+    <link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
     
   <style>
   body {
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Alkatra', sans-serif;
     background-color: #f2f2f2;
-    color: #333;
+    color: #fff;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
   }
 
   .intro, .about, .why-needed, .what-do, .what-do-get {
@@ -90,8 +92,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <section class="about">
       <img src="https://images.pexels.com/photos/3009800/pexels-photo-3009800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 2">
       <div class="about-text">
-        <h2>What is Everybody Welcome?</h2>
-        <p>Everybody Welcome is a straightforward, smart tool to help you record, share and market relevant accessibility information about your venue.</p>
+        <h2>What is Access and Inclusion UK?</h2>
+        <p>Access and Inclusion UK is a straightforward, smart tool to help you record, share and market relevant accessibility information about your venue.</p>
       </div>
     </section>
 
@@ -117,7 +119,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <section class="what-do-get">
     <img src="https://images.pexels.com/photos/4058223/pexels-photo-4058223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 5">
       <div class="what-do-get-content">
-        <h2>What do I get? </h2>
-        <p>Not only does creating an Everybody Welcome listing give you a unique URL to share with your target audiences, it also generates an exclusive QR code to display around your venue, enabling you to provide access information for your visitors when and where they need it.</p>
+        <h2>What do I get?</h2>
+        <p>Not only does creating a listing give you a unique URL to share with your target audiences, it also generates an exclusive QR code to display around your venue, enabling you to provide access information for your visitors when and where they need it.</p>
 
     <?php include("Footer.php");?>
