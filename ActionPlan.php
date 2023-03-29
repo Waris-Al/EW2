@@ -39,35 +39,19 @@ function getQNos()
 $NumberOfQs = getQNos();
 
 
-
-$pointsToImprove = "Action Points \n";
-$goodPoints = "No";
+$email = $_GET['company'];
+$pointsToImprove = "";
+$goodPoints = "";
 $NumberOfImprovemenets = 0;
 $totalQuestions = $_GET['totalQuestions'];
 $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
 for ($i=1; $i <= $NumberOfQs; $i++)
 {
 $QuestionInDB = "Q" . strval($i);
-if (isset($_GET["$QuestionInDB"]) && $_GET["$QuestionInDB"]=="no")
-{
-$NumberOfImprovemenets++;
-  $stmt = $db->prepare("SELECT ActionPoint FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
-  $result = $stmt->execute();
-
-  $arrayResult = [];
-  $rows = $stmt->fetchAll();
-  foreach ($rows as $row) {
-      $arrayResult[] = $row;
-  }
-
-  foreach ($arrayResult as $value)
-{
-    $pointsToImprove.= "-" . $value['ActionPoint'] . "\n";
-}
-}
-else if (isset($_GET["$QuestionInDB"]))
+if (isset($_GET["$QuestionInDB"]) && $_GET["$QuestionInDB"]=="yes")
 {
   //here add to the type counter thing
+  
   $stmt = $db->prepare("SELECT GoodPoint, Type FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
   $result = $stmt->execute();
 
@@ -112,6 +96,24 @@ else if ($type == "Website navigation")
 }
 }
 }
+else if (isset($_GET["$QuestionInDB"]))
+{
+$NumberOfImprovemenets++;
+  $stmt = $db->prepare("SELECT ActionPoint FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
+  $result = $stmt->execute();
+
+  $arrayResult = [];
+  $rows = $stmt->fetchAll();
+  foreach ($rows as $row) {
+      $arrayResult[] = $row;
+  }
+
+  foreach ($arrayResult as $value)
+{
+    $pointsToImprove.= "-" . $value['ActionPoint'] . "\n";
+}
+}
+
 
 }
 if ($totalYesPhysical > 0 && $physical > 0)
@@ -153,13 +155,28 @@ then inserts into questions and stuff
 make sure to get the company ID as well*/
 $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
-$pointsToImprove .= "\nGood points \n $goodPoints";
-$pointsToImprove .= "\nYour overall Accessibility Score is $totalPercent %";
 $report = $_GET['company'] . ".pdf";
 $pdf=new PDF();
 $pdf->AddPage();
+
+$pdf->SetFont('Arial','',30);
+$pdf->Write(3, "Accessibility Report for $email \n\n");
+
+$pdf->SetFont('Arial','',15);
+$pdf->Write(20, "The overall Accessibility Score for $email is $totalPercent% \n\n");
+
+$pdf->SetFont('Arial','',13);
+$pdf->Write(5, "Things $email does well:");
+
 $pdf->SetFont('Arial','',10);
-$pdf->Write(5, $pointsToImprove); // Use Write() instead of MultiCell() and set a height of 5
+$pdf->Write(10, "\n $goodPoints"); // Use Write() instead of MultiCell() and set a height of 5
+$pdf->Ln(); // Add a blank line
+
+$pdf->SetFont('Arial','',13);
+$pdf->Write(5, "Things $email could do to improve: \n");
+
+$pdf->SetFont('Arial','',10);
+$pdf->Write(10, $pointsToImprove); // Use Write() instead of MultiCell() and set a height of 5
 $pdf->Ln(); // Add a blank line
 
 
@@ -170,20 +187,16 @@ $pdf->Image($qr_file);
 */
 
 // Generate the QR code image and store it in a temporary file
+$pdf->AddPage();
 $file_location = "https://everyonewelcome2.azurewebsites.net/" . $report;
 $qrtext = "$file_location";
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();
 
-// Set the distance from the bottom of the page
-$distance_from_bottom = 50;
-
-// Calculate the Y coordinate of the image
-$image_y = $page_height - $distance_from_bottom - 50; // 50 is the height of the image
 
 // Display the image
-$pdf->Image($temp_file, 150, $image_y, 50, 50, 'PNG');
+$pdf->Image($temp_file, 50, 100, 100, 100, 'PNG');
 
 // Delete the temporary file
 unlink($temp_file);

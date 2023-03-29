@@ -35,7 +35,8 @@ if (isset($_POST['submit'])) {
         
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
   
-        $stmt = $db->prepare("UPDATE Checklist SET $col = '$updater' WHERE QuestionNo = '$questionNo'");
+        $stmt = $db->prepare("UPDATE Checklist SET $col = :updater WHERE QuestionNo = '$questionNo'");
+        $stmt->bindValue(':updater', $updater, SQLITE3_TEXT);
         $result = $stmt->execute();
     }
 
@@ -63,6 +64,7 @@ if (isset($_POST['submit'])) {
                         <td>Action Point</td>
                         <td>Venue</td>
                         <td>Type</td>
+                        <td>Good Point</td>
                         <td>Additional Information</td>
                     </thead>
                     <?php
@@ -78,6 +80,7 @@ if (isset($_POST['submit'])) {
                         <td><?php echo $user[$i]['ActionPoint']?></td>
                         <td><?php echo $user[$i]['Venue']?></td>
                         <td><?php echo $user[$i]['Type']?></td>
+                        <td><?php echo $user[$i]['GoodPoint']?></td>
                         <td><?php echo $user[$i]['AdditionalInfo']?></td>
 
                         </tr>
@@ -97,6 +100,7 @@ instead adding a new question closer to how you want it to look. <br>
   <option value="ActionPoint">Action</option>
   <option value="Venue">Venue</option>
   <option value="Type">Type</option>
+  <option value="GoodPoint">Good Point</option>
   <option value="AdditionalInfo">Additional Information</option>
   <option value="Delete">Delete</option>
 </select>

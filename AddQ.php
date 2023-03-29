@@ -55,8 +55,15 @@ if (isset($_POST['submit'])) {
         $ven = $_POST['venue']; 
         $GP = $_POST['GP'];
         $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
-        $stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue, GoodPoint, AdditionalInfo) VALUES ('$lastQ', '$quest', '$point', '$ven', '$GP', '$info')");
-        $result = $stmt->execute();
+        $insert_stmt = $db->prepare("INSERT INTO Checklist (QuestionNo, Question, ActionPoint, Venue, GoodPoint, AdditionalInfo) VALUES (:lastQ, :quest, :point, :ven, :GP, :info)");
+      
+      $insert_stmt->bindValue(':lastQ', $lastQ, SQLITE3_TEXT);
+      $insert_stmt->bindValue(':quest', $quest, SQLITE3_TEXT);
+      $insert_stmt->bindValue(':point', $point, SQLITE3_TEXT);
+      $insert_stmt->bindValue(':ven', $ven, SQLITE3_TEXT);
+      $insert_stmt->bindValue(':GP', $GP, SQLITE3_TEXT);
+      $insert_stmt->bindValue(':info', $info, SQLITE3_TEXT);
+      $insert_result = $insert_stmt->execute();
         header("Location: QuestionUpdater.php");
         
     }

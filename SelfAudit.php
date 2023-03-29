@@ -69,32 +69,7 @@ input[type="radio"][value="no"]:checked {
     .submit-button {
         margin-top: 10px;
     }
-
-    /* Show the tooltip when the element is in focus */
-.my-element:focus:after {
-  content: "Tooltip text";
-  display: block;
-  position: absolute;
-  background-color: #333;
-  color: #fff;
-  padding: 5px;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 5px);
-}
-
-/* Hide the tooltip by default */
-.my-element:after {
-  display: none;
-}
-
-/* Show the tooltip on hover for non-touch devices */
-@media (hover: hover) {
-  .my-element:hover:after {
-    display: block;
-  }
-}
-
+    
 
   </style>
 
@@ -195,7 +170,6 @@ $questInfo = $row['AdditionalInfo'];
 $idYes = $questionNo . "-yes";
 $idNo = $questionNo . "-no";
 $additionalInfo = "<a title='$questInfo'><img src='https://shots.jotform.com/kade/Screenshots/blue_question_mark.png' height='13px'/></a>";
-    
 ?>
 <label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question; if ($questInfo != "")
 {echo $additionalInfo;}?></label>
