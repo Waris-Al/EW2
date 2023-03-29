@@ -1,5 +1,5 @@
 <?php 
-include("NavigationBar.php");
+ include 'navBarAdmin.php';
 function getInfo()
 {
 $questionNo = $_GET['questionNo'];

@@ -205,6 +205,7 @@ h1, h2, h3, h4, h5, h6 {
             <option value="venue">Venue</option>
             <option value="cinema">Cinema</option>
             <option value="gym">Gym</option>
+            <option value="Property">Property</option>
           </select>
         </div>
       </div>
