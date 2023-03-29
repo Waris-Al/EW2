@@ -129,10 +129,10 @@ input[type="submit"]:hover {
         <select class="form-control" id="companyType" name="company" required>
           <option value="">--- Select an Option ---</option>
           <option value="restaurant">Restaurant</option>
-          <option value="venue">Venue</option>
           <option value="cinema">Cinema</option>
           <option value="gym">Gym</option>
           <option value="Property">Property</option>
+          <option value="General">Other</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Register Now</button>

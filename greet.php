@@ -41,8 +41,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 </head>
 <body>
   <h1>Your Registration has been completed</h1>
-  
-  <a href="SelfAudit.php" class="btn">Proceed to the Audit</a>
+  <?php 
+  $comname = $_GET['company']; 
+  $type = $_GET['type']; 
+
+
+$_SESSION['company'] = $comname;
+$_SESSION['type'] = $type;
+
+?>
+  <a href="SelfAudit.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
 
 
 
