@@ -181,7 +181,7 @@ $pdf=new PDF();
 $pdf->AddPage();
 
 $pdf->SetFont('Arial','',30);
-$pdf->Write(3, "Accessibility Report for $email \n\n");
+$pdf->Write(15, "Accessibility Report for $email \n\n");
 
 $pdf->SetFont('Arial','',15);
 $pdf->Write(20, "The overall Accessibility Score for $email is $totalPercent% \n\n");
@@ -229,7 +229,7 @@ $string1 .= "'";
 $string1 .= ', "_blank");</script>';
 echo $string1;
 // output JavaScript code to navigate to the "new-page.php" page
-echo "<script>window.location.href = 'test123.php?audit=$file_location';</script>";
+echo "<script>window.location.href = 'auditCreated.php?audit=$file_location';</script>";
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
   /*

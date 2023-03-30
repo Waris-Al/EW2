@@ -130,7 +130,8 @@ p {
     <p>We have created an audit that you can view by going to the following link below, or by searching for it in the 'Check Location' section of our site</p>
     
       <br>
-      <a href=<?php echo $audit?> class="btn" title="Your audit">Your audit</a> 
+      <a href="<?php echo $audit?>" class="btn" title="Your audit" target="_blank">Your audit</a>
+    <?php //open new tab?>
     </div>
 
 </div>

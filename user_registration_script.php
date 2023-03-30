@@ -11,7 +11,7 @@
     
     $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");
 
-$dontAsk = rand(1, 100);
+$dontAsk = rand(1, 100000);
 $insert_stmt = $db->prepare("INSERT INTO company (id, email, pass, cname, city, postal, btype) VALUES ($dontAsk, :email, :password, :cname, :city, :pcode, :company)");
 $insert_stmt->bindValue(':email', $email, SQLITE3_TEXT);
 $insert_stmt->bindValue(':password', $password, SQLITE3_TEXT);
