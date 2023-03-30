@@ -33,7 +33,13 @@
             <a class="nav-link" href="logout.php">Logout</a>
           </li>
         </ul>
-        
+        <script>
+  function changeFontSize() {
+  var size = document.getElementById("fontsize").value;
+  document.body.style.fontSize = size + "px";
+}
+</script>
+
       </div>
     </nav>
     </header>

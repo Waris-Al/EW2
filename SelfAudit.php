@@ -9,7 +9,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   include 'NavigationBar.php';
 }
 $amountOfQuestions=10;
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -153,10 +155,7 @@ $filterNav = array_filter($questions, function($question) {
 });
 $amountOfNavQuestions = count($filterNav);
 
-
-
-?>
-<?php foreach ($questions as $row) : ?>
+foreach ($questions as $row) : ?>
 
 
 <form action="ActionPlan.php" method="get">
@@ -170,13 +169,16 @@ $questInfo = $row['AdditionalInfo'];
 $idYes = $questionNo . "-yes";
 $idNo = $questionNo . "-no";
 $additionalInfo = "<a title='$questInfo'><img src='https://shots.jotform.com/kade/Screenshots/blue_question_mark.png' height='13px'/></a>";
+
+
 ?>
 <label for="<?php echo $idYes ?>" style="display: inline-block; width: 43%;"><?php echo $question; if ($questInfo != "")
 {echo $additionalInfo;}?></label>
 
 <div style="display: inline-block; text-align: left;">
-    <input type='radio' id='<?php echo $idYes ?>' name='<?php echo $questionNo ?>' value='yes' style="display: inline-block;">Yes
-    <input type='radio' id='<?php echo $idNo ?>' name='<?php echo $questionNo ?>' value='no' style="display: inline-block;">No
+<input type='radio' id='<?php echo $idYes ?>' name='<?php echo $questionNo ?>' value='yes' style="display: inline-block;" onchange="saveAnswer('<?php echo $questionNo ?>', this.value);">Yes
+<input type='radio' id='<?php echo $idNo ?>' name='<?php echo $questionNo ?>' value='no' style="display: inline-block;" onchange="saveAnswer('<?php echo $questionNo ?>', this.value);">No
+
 </div>
 </li>
 <?php endforeach;?>
@@ -216,6 +218,20 @@ $amountOfCommQuestions
     </div>
   </div>
   <script>
+window.onload = function() {
+  <?php foreach ($questions as $row) : ?>
+    var answer = localStorage.getItem('<?php echo $row['QuestionNo'] ?>');
+    if (answer) {
+      document.querySelector('input[name="<?php echo $row['QuestionNo'] ?>"][value="' + answer + '"]').checked = true;
+    }
+  <?php endforeach; ?>
+}
+
+
+function saveAnswer(questionNo, answer) {
+  localStorage.setItem(questionNo, answer);
+}
+
 $(document).ready(function() {
 
 // Check if there are any saved responses in the local storage
@@ -252,6 +268,11 @@ if (totalChecked == <?php echo $totalQ; ?>) {
   $('#submit-btn').attr('disabled', true);
 }
 });
+
+document.addEventListener('submit', () => {
+    // clear the local storage
+    localStorage.clear();
+  });
 
 
 

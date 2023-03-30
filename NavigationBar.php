@@ -50,7 +50,13 @@
   <option value="20"  >Medium</option>
   <option value="24">Large</option>
 </select>
-        
+<script>
+  function changeFontSize() {
+  var size = document.getElementById("fontsize").value;
+  document.body.style.fontSize = size + "px";
+}
+</script>
+
       </div>
     </nav>
     </header>

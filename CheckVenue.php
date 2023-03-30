@@ -248,6 +248,7 @@ h1, h2, h3, h4, h5, h6 {
         </thead>
         <tbody>
           <?php
+          $URL = "https://everyonewelcome2.azurewebsites.net/";
           if (!$building) {
             echo '<tr>No data found</tr>';
           } else {
@@ -255,8 +256,8 @@ h1, h2, h3, h4, h5, h6 {
               ?>
               <tr>
                 <td><?php echo $key + 1; ?></td>
-                <td><?php echo $value['cname']; ?></td>
-                <td><?php echo $value['city']; ?></td>
+                <td><a href="<?php echo $URL . $value['cname'] . '.pdf'; ?>" target="_blank" onclick="window.open('<?php echo $URL . $value['cname'] . '.pdf'; ?>','newwindow'); return false;"><?php echo $value['cname'];?></td>
+                        <td><?php echo $value['city']; ?></td>
 <td><?php echo $value['postal']; ?></td>
 <td><?php echo $value['btype']; ?></td>
 </tr>

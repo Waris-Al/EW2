@@ -160,10 +160,11 @@ function getID()
 
 $result = getID();
 $stringResult = implode(", ", $result[0]);
+$int = (int)$stringResult;
 
-$stringResult = $stringResult + 1;
+$int = $int + 1;
 
-$insert_stmt = $db->prepare("INSERT INTO questions (id, cid, wchair, video, audio, hearing, parking) VALUES ('$stringResult', '$ID', '$wchair', '$video', '$audio', '$hearin', '$parking')");
+$insert_stmt = $db->prepare("INSERT INTO questions (id, cid, wchair, video, audio, hearing, parking) VALUES ('$int', '$ID', '$wchair', '$video', '$audio', '$hearin', '$parking')");
 $insert_result = $insert_stmt->execute();
   
 /*
@@ -230,4 +231,9 @@ echo "\nYour overall Accessibility Score is $totalPercent %";
   //C:\xampp\htdocs\Group-Three-PSP-
   */
 ?>
+
+<script>
+localStorage.clear();
+</script>
+
   
