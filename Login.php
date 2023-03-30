@@ -49,10 +49,12 @@ session_start();
                 <div class="form-group">
                   <label for="email" class="form-label">Email</label>
                   <input type="email" id="email" class="form-control" name="email" required>
+                  <span style="color: white"><?php echo $_SESSION['error_message']; ?></span>
                 </div>
                 <div class="form-group">
                   <label for="password" class="form-label">Password</label>
                   <input type="password" id="password" class="form-control" name="password" required>
+                  <span style="color: white"><?php echo $_SESSION['error_message']; ?></span>
                 </div>
                 <div class="form-group form-check d-flex justify-content-between">
                   <div class="custom-control custom-checkbox">
