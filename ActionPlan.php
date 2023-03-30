@@ -222,14 +222,27 @@ $pdf->Image($temp_file, 50, 100, 100, 100, 'PNG');
 // Delete the temporary file
 unlink($temp_file);
 
-$pdf->Output();
 $pdf->Output('F', $report);
-
+$string1 = "<script>window.open('";
+$string1 .= $report;
+$string1 .= "'";
+$string1 .= ', "_blank");</script>';
+echo $string1;
+// output JavaScript code to navigate to the "new-page.php" page
+echo "<script>window.location.href = 'test123.php';</script>";
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
   /*
   //C:\xampp\htdocs\Group-Three-PSP-
+  $pdf->Output('F', $report);
+$string1 = "<script>window.open('";
+$string1 .= $report;
+$string1 .= "'";
+$string1 .= ', "_blank");</script>';
+echo $string1;
+
   */
+
 ?>
 
 <script>
