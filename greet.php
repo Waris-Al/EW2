@@ -16,7 +16,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <head>
   <title>A HUGE Welcome From Access For All</title>
   <style>
-    /* Add styles for a visually appealing homepage */
     body {
       font-family: Arial, sans-serif;
       text-align: center;

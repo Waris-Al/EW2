@@ -9,7 +9,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

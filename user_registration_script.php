@@ -1,5 +1,4 @@
 <?php
-    //require 'connection.php';
     session_start();
     
     $email = $_POST['email'];

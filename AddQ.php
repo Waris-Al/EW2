@@ -1,6 +1,6 @@
 <?php include("NavigationBar.php"); ?>
 
-<?php $x=0;
+<?php 
 function getQs()
 {
   $db = new PDO("sqlsrv:server = tcp:access4all.database.windows.net,1433; Database = ActionPoints", "groupthreeadmin", "%Pa55w0rd");

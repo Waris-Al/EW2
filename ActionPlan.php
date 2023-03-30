@@ -50,7 +50,7 @@ for ($i=1; $i <= $NumberOfQs; $i++)
 $QuestionInDB = "Q" . strval($i);
 if (isset($_GET["$QuestionInDB"]) && $_GET["$QuestionInDB"]=="yes")
 {
-  //here add to the type counter thing
+
   
   $stmt = $db->prepare("SELECT GoodPoint, Type FROM Checklist WHERE QuestionNo = '$QuestionInDB'");
   $result = $stmt->execute();
@@ -167,13 +167,6 @@ $int = $int + 1;
 $insert_stmt = $db->prepare("INSERT INTO questions (id, cid, wchair, video, audio, hearing, parking) VALUES ('$int', '$ID', '$wchair', '$video', '$audio', '$hearin', '$parking')");
 $insert_result = $insert_stmt->execute();
   
-/*
-
-
-final insert statement
-so now around here find out if the counter is at least half the total. if it is
-then inserts into questions and stuff
-make sure to get the company ID as well*/
 $totalPercent = (100-($NumberOfImprovemenets/$totalQuestions)*100);
 $totalPercent = round($totalPercent, 1);
 $report = $_GET['company'] . ".pdf";
@@ -232,16 +225,7 @@ echo $string1;
 echo "<script>window.location.href = 'auditCreated.php?audit=$file_location';</script>";
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
-  /*
-  //C:\xampp\htdocs\Group-Three-PSP-
-  $pdf->Output('F', $report);
-$string1 = "<script>window.open('";
-$string1 .= $report;
-$string1 .= "'";
-$string1 .= ', "_blank");</script>';
-echo $string1;
 
-  */
 
 ?>
 

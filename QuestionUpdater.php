@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] === true) {
-  // display the navbar with the logout link
+  // d
   include 'navBarAdmin.php';
 } else {
   // display the default navbar

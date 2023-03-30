@@ -85,7 +85,7 @@ input[type="submit"]:hover {
   background-color: #0062cc;
 }
 
-/* Responsive design */
+/* Responsive desin */
 @media screen and (max-width: 600px) {
   .container {
     width: 100%;

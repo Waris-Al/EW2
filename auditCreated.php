@@ -131,7 +131,6 @@ p {
     
       <br>
       <a href="<?php echo $audit?>" class="btn" title="Your audit" target="_blank">Your audit</a>
-    <?php //open new tab?>
     </div>
 
 </div>

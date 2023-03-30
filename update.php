@@ -18,9 +18,6 @@ $questionNo = $_GET['questionNo'];
   return $arrayResult;
 }
 $nameErr = $invalidMesg = "";
-/*UPDATE Checklist
-SET Question = 'Testing testing 123'
-WHERE Question = "Testing this at home"; */
 if (isset($_POST['submit'])) {
 
     if ($_POST['username']=="" && $_POST['updating'] != "Delete") {
