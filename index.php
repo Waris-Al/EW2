@@ -43,6 +43,8 @@ else
     margin-right: auto;
     border-radius: 10px;
     color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
+
 }
 .content p {
     color: #000;

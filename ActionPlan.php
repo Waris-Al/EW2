@@ -223,7 +223,124 @@ if ($hearing == 'Yes')
 //a radical idea ive had far too late
 $myFile = "$email.php"; // or .php   
 $fh = fopen($myFile, 'w'); // or die("error");  
-$stringData = "<h1 style='text-align:center;'>Accessibility Report for $email</h1>
+$stringData = "
+<?php
+session_start();
+if (isset(\$_SESSION['loggedin']) && \$_SESSION['loggedin'] === true) {
+  // display the navbar with the logout link
+  include 'NavbarLoggedin.php';
+}
+else
+{
+  include 'NavigationBar.php';
+}
+?>
+
+<style>
+    body {
+      color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+        top: -20px;
+      }
+      .content {
+    backdrop-filter: blur(5px);
+    padding: 1.5em;
+    margin-top: 3em;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8); /* add an opaque white background */
+}
+
+.content p {
+    color: #000;
+    opacity: 1;
+    font-size: 1em;
+    
+}
+
+h1 {
+    font-size: 2.25em;
+}
+
+p {
+    margin: 1.5em auto;
+    width: 80%;
+}
+
+.btn {
+    width: 100%;
+    background-color: #008CBA;
+    border-radius: 40px;
+    color: #fff;
+    padding: 0.75em 1.25em;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1.5em;
+    display: inline-block;
+    font-size: 1em;
+}
+
+    .btn:hover {
+        background-color: #3367d6;
+    }
+
+    .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    position: relative;
+        top: -60px;
+        
+}
+
+.feature {
+    margin: 1.5em;
+    width: 40em;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+  
+.feature img {
+    width: 100%;
+    height: 12.5em;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+.feature h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+                                            
+.feature p {
+    margin: 0 auto 1.5em;
+    width: 80%;
+    line-height: 1.5;
+    font-size: 1em;
+}
+</style>
+
+
+
+<body>
+
+<div class='features'>
+    <div class='feature'>
+
+<h1 style='text-align:center;'>Accessibility Report for $email</h1>
 <h2 style='text-align:center;'>$email has an overall accessibility rating of 87%.</h2>
 <p style='text-align:center;'>$email is good for visitors with:</p>
 <?php 
@@ -251,7 +368,8 @@ $stringData = "<h1 style='text-align:center;'>Accessibility Report for $email</h
 ?>
 
 <p style='text-align:center;'>To see more about $email accessibility features, you can <a href='$file_location' target='_blank'>click here</a> to view a PDF highlighting all the areas they succeed in, and the areas in which they could improve.</p>
-";   
+<div>
+</div>";   
 fwrite($fh, $stringData);
 fclose($fh);
 

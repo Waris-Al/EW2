@@ -154,8 +154,8 @@ $filterNav = array_filter($questions, function($question) {
   return $question['Type'] == 'Website navigation';
 });
 $amountOfNavQuestions = count($filterNav);
-
-foreach ($questions as $row) : ?>
+foreach ($questions as $row) : 
+?>
 
 
 <form action="ActionPlan.php" method="get">
@@ -181,7 +181,10 @@ $additionalInfo = "<a title='$questInfo'><img src='https://shots.jotform.com/kad
 
 </div>
 </li>
-<?php endforeach;?>
+
+<?php 
+endforeach;
+?>
 <br>
 <input type="hidden" name="totalQuestions" value="<?php echo $totalQ ?>">
     <input type="hidden" name="company" value="<?php echo $_GET['company'] ?>">
