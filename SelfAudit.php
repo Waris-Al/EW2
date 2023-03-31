@@ -24,8 +24,23 @@ $amountOfQuestions=10;
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
+
+body {
+      color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+        top: -20px;
+        
+  
+}
+
     .progress {
-      width: 50%;
+      width: 98%;
       height: 20px;
       margin-left: 10px;
     }
@@ -75,7 +90,7 @@ input[type="radio"][value="no"]:checked {
 
   </style>
 
-
+<img src="logo.png" style= " width:200px; position: fixed;left: -5px;top: 58px;" >
 <?php 
 /*
 in the below function, also select QuestionType
@@ -159,7 +174,7 @@ foreach ($questions as $row) :
 
 
 <form action="ActionPlan.php" method="get">
-<li>
+<li style=" background-color: rgba(255, 255, 255, 0.7); color: #000000;">
 <?php 
 $totalQ = $amountOfQuestions;
 $questionNo = $row['QuestionNo'];
@@ -180,6 +195,7 @@ $additionalInfo = "<a title='$questInfo'><img src='https://shots.jotform.com/kad
 <input type='radio' id='<?php echo $idNo ?>' name='<?php echo $questionNo ?>' value='no' style="display: inline-block;" onchange="saveAnswer('<?php echo $questionNo ?>', this.value);">No
 
 </div>
+<?php echo "\n" ?>
 </li>
 
 <?php 
@@ -284,5 +300,4 @@ document.addEventListener('submit', () => {
 </html>
 
 <?php  include("Footer.php");?>
-
 
