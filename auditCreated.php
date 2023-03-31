@@ -6,13 +6,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   $welcomemessage = "Welcome back";
 } else if (isset($_SESSION['loggedinAdmin']) && $_SESSION['loggedinAdmin'] === true){
   include 'navBarAdmin.php';
-  $welcomemessage = "A BIG Hello From Everybody Welcome!";
+  $welcomemessage = "A BIG Hello From Access and Inclusion!";
   // display the default navbar
 }
 else
 {
   include 'NavigationBar.php';
-  $welcomemessage = "A BIG Hello From Everybody Welcome!";
+  $welcomemessage = "A BIG Hello From Access and Inclusion!";
 }
 
 $audit = $_GET['audit'];
