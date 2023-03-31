@@ -397,7 +397,7 @@ unlink($temp_file);
 
 $pdf->Output('F', $report);
 // output JavaScript code to navigate to the "new-page.php" page
-echo "<script>window.location.href = 'auditCreated.php?audit=$pdfLocation';</script>";
+echo "<script>window.location.href = 'auditCreated.php?audit=$file_location';</script>";
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
 
