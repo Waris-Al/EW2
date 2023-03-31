@@ -200,7 +200,7 @@ $pdf->Ln(); // Add a blank line
 // Generate the QR code image and store it in a temporary file
 $pdf->AddPage();
 $file_location = "https://everyonewelcome2.azurewebsites.net/" . $report;
-$pdfLocation = $file_location = "https://everyonewelcome2.azurewebsites.net/" . $email . ".php";
+$pdfLocation = "https://everyonewelcome2.azurewebsites.net/" . $email . ".php";
 $qrtext = "$pdfLocation";
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
@@ -396,11 +396,6 @@ $pdf->Image($temp_file, 50, 100, 100, 100, 'PNG');
 unlink($temp_file);
 
 $pdf->Output('F', $report);
-$string1 = "<script>window.open('";
-$string1 .= $file_location;
-$string1 .= "'";
-$string1 .= ', "_blank");</script>';
-echo $string1;
 // output JavaScript code to navigate to the "new-page.php" page
 echo "<script>window.location.href = 'auditCreated.php?audit=$pdfLocation';</script>";
 

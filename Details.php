@@ -97,7 +97,6 @@ input[type="submit"]:hover {
     </style>
   </head>
   <body>
-     <img src="logo.png" style= " width:200px; position: fixed;left: -5px;top: 58px;" >
   <div class="container">
     <h1>Welcome to our platform</h1>
     <h3>We're glad you're here!</h3>
