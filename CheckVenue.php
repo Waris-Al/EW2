@@ -23,7 +23,7 @@ if (isset($_POST['save'])) {
 
   if (!empty($_POST['search'])) { 
     $search = $_POST['search'];
-    $stmt = $db->prepare("select * from company where city like '%$search%' or btype like '%$search%'");
+    $stmt = $db->prepare("select * from company where city like '%$search%' or btype like '%$search%' or cname like '%$search%'");
     $stmt->execute();
     $building = $stmt->fetchAll(PDO::FETCH_ASSOC);
   }

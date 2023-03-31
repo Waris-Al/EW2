@@ -121,7 +121,6 @@ p {
 </head>
 
 <body>
-  <img src="logo.png" style= " width:200px; position: fixed;left: -5px;top: 58px;" >
 
 
   <div class="features">
