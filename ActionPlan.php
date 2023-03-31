@@ -121,7 +121,7 @@ if ($totalYesPhysical > 0 && $physical > 0)
   $overallPhysical = ($totalYesPhysical/$physical) * 100;
   if ($overallPhysical >= 50)
   {
-    $wchair = "Yes";
+    $wchair = 'Yes';
     $parking = "Yes";
   }
 }
@@ -130,7 +130,7 @@ if ($totalYesWeb > 0 && $totalYesNav > 0 && $totalYesVisual > 0 && $web > 0 && $
   $overallWeb = (($totalYesWeb/$web) + ($totalYesNav/$nav) + ($totalYesVisual/$visual))*100;
   if ($overallWeb >= 50)
   {
-    $video = "Yes";
+    $video = 'Yes';
   }
 }
 if ($totalYesHearing > 0 && $hearing > 0)
@@ -138,8 +138,8 @@ if ($totalYesHearing > 0 && $hearing > 0)
   $overallHearing = ($totalYesHearing/$hearing)*100;
   if ($overallHearing >= 50)
   {
-    $audio = "Yes";
-    $hearin = "Yes";
+    $audio = 'Yes';
+    $hearin = 'Yes';
   }
 }
 
@@ -194,11 +194,6 @@ $pdf->Write(10, $pointsToImprove); // Use Write() instead of MultiCell() and set
 $pdf->Ln(); // Add a blank line
 
 
-/*undo till this is left
-$qr_text = 'https://youtu.be/LfdCMBCt2r4'; // change this to the text you want to encode in the QR code
-$qr_file = 'qr.png'; // specify the filename for the QR code image
-$pdf->Image($qr_file);
-*/
 
 // Generate the QR code image and store it in a temporary file
 $pdf->AddPage();
@@ -208,6 +203,57 @@ $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();
 
+$wchairPoint = '';
+$videoPoint = '';
+$hearingPoint = '';
+
+if ($wchair == 'Yes')
+{
+	$wchairPoint = '<li style=text-align:center;>Wheelchair users</li>';
+}
+if ($video == 'Yes')
+{
+	$videoPoint = '<li style=text-align:center;>Visual impairments</li>';
+}
+if ($hearing == 'Yes')
+{
+	$hearingPoint = '<li style=text-align:center;>Hearing difficulty</li>';
+}
+
+//a radical idea ive had far too late
+$myFile = "$email.php"; // or .php   
+$fh = fopen($myFile, 'w'); // or die("error");  
+$stringData = "<h1 style='text-align:center;'>Accessibility Report for $email</h1>
+<h2 style='text-align:center;'>$email has an overall accessibility rating of 87%.</h2>
+<p style='text-align:center;'>$email is good for visitors with:</p>
+<?php 
+	echo '$wchairPoint';
+	echo '$videoPoint';
+	echo '$hearingPoint';
+
+
+  if ('$wchairPoint' == '' || '$videoPoint' == '' || '$hearingPoint' == '')
+  {
+    echo '<p style=text-align:center;>$email is not suited to visitors with</p>';
+    if ('$wchairPoint' == '')
+    {
+      echo '<li style=text-align:center;>Wheelchair users</li>';
+    }
+    if ('$videoPoint' == '')
+    {
+      echo '<li style=text-align:center;>Visual impairments</li>';
+    }
+    if ('$hearingPoint' == '')
+    {
+      echo '<li style=text-align:center;>Hearing difficulty</li>';
+    }
+  }
+?>
+
+<p style='text-align:center;'>To see more about $email accessibility features, you can <a href='$file_location' target='_blank'>click here</a> to view a PDF highlighting all the areas they succeed in, and the areas in which they could improve.</p>
+";   
+fwrite($fh, $stringData);
+fclose($fh);
 
 // Display the image
 $pdf->Image($temp_file, 50, 100, 100, 100, 'PNG');
