@@ -260,7 +260,7 @@ if (isset($_POST['save'])) {
             ?>
                 <tr>
                   <td><?php echo $key + 1; ?></td>
-                  <td><a href="<?php echo $URL . $value['cname'] . '.pdf'; ?>" target="_blank" onclick="window.open('<?php echo $URL . $value['cname'] . '.pdf'; ?>','newwindow'); return false;"><?php echo $value['cname'];?></td> 
+                  <td><a href="<?php echo $URL . $value['cname'] . '.php'; ?>" target="_blank" onclick="window.open('<?php echo $URL . $value['cname'] . '.php'; ?>','newwindow'); return false;"><?php echo $value['cname'];?></td> 
                   <td><?php echo $value['city']; ?></td>
                   <td><?php echo $value['postal']; ?></td>
                   <td><?php echo $value['btype']; ?></td>

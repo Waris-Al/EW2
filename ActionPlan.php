@@ -14,6 +14,7 @@ $nav = $_GET['nav'];
 
 $wchair = "No";
 $video = "No";
+$sensory = "No";
 $audio = "No";
 $hearin = "No";
 $parking = "No";
@@ -131,6 +132,7 @@ if ($totalYesWeb > 0 && $totalYesNav > 0 && $totalYesVisual > 0 && $web > 0 && $
   if ($overallWeb >= 50)
   {
     $video = 'Yes';
+    $sensory = 'Yes';
   }
 }
 if ($totalYesHearing > 0 && $hearing > 0)
@@ -205,6 +207,7 @@ $page_height = $pdf->GetPageHeight();
 
 $wchairPoint = '';
 $videoPoint = '';
+$sensoryPoint = '';
 $hearingPoint = '';
 
 if ($wchair == 'Yes')
@@ -214,6 +217,10 @@ if ($wchair == 'Yes')
 if ($video == 'Yes')
 {
 	$videoPoint = '<li style=text-align:center;>Visual impairments</li>';
+}
+if ($sensory == 'Yes')
+{
+	$sensoryPoint = '<li style=text-align:center;>Sensory issues</li>';
 }
 if ($hearing == 'Yes')
 {
@@ -341,15 +348,16 @@ p {
     <div class='feature'>
 
 <h1 style='text-align:center;'>Accessibility Report for $email</h1>
-<h2 style='text-align:center;'>$email has an overall accessibility rating of 87%.</h2>
+<h2 style='text-align:center;'>$email has an overall accessibility rating of $totalPercent%.</h2>
 <p style='text-align:center;'>$email is good for visitors with:</p>
 <?php 
 	echo '$wchairPoint';
 	echo '$videoPoint';
 	echo '$hearingPoint';
+  echo '$sensoryPoint';
 
 
-  if ('$wchairPoint' == '' || '$videoPoint' == '' || '$hearingPoint' == '')
+  if ('$wchairPoint' == '' || '$videoPoint' == '' || '$hearingPoint' == '' || '$sensoryPoint' == '')
   {
     echo '<p style=text-align:center;>$email is not suited to visitors with</p>';
     if ('$wchairPoint' == '')
@@ -360,6 +368,10 @@ p {
     {
       echo '<li style=text-align:center;>Visual impairments</li>';
     }
+    if ('$sensoryPoint' == '')
+    {
+      echo '<li style=text-align:center;>Sensory issues</li>';
+    }
     if ('$hearingPoint' == '')
     {
       echo '<li style=text-align:center;>Hearing difficulty</li>';
@@ -369,7 +381,10 @@ p {
 
 <p style='text-align:center;'>To see more about $email accessibility features, you can <a href='$file_location' target='_blank'>click here</a> to view a PDF highlighting all the areas they succeed in, and the areas in which they could improve.</p>
 <div>
-</div>";   
+</div>
+
+
+<?php include 'Footer.php'; ?>";   
 fwrite($fh, $stringData);
 fclose($fh);
 
