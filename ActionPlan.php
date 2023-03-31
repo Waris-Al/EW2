@@ -199,8 +199,9 @@ $pdf->Ln(); // Add a blank line
 
 // Generate the QR code image and store it in a temporary file
 $pdf->AddPage();
-$file_location = "https://everyonewelcome2.azurewebsites.net/" . $email . ".php";
-$qrtext = "$file_location";
+$file_location = "https://everyonewelcome2.azurewebsites.net/" . $report;
+$pdfLocation = $file_location = "https://everyonewelcome2.azurewebsites.net/" . $email . ".php";
+$qrtext = "$pdfLocation";
 $temp_file = tempnam(sys_get_temp_dir(), 'qr_');
 QRcode::png($qrtext, $temp_file, QR_ECLEVEL_Q, 10);
 $page_height = $pdf->GetPageHeight();

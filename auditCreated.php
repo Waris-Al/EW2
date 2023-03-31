@@ -137,4 +137,3 @@ p {
 <style>
 
 </style>
-<?php require("Footer.php");?>

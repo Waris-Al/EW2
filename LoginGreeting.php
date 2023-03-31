@@ -72,6 +72,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <body>
   <h1>You have successfully Logged In!</h1>
   
-  <a href="Checkvenuelog.php" class="btn">Proceed to Check the Venue</a> 
+  <a href="Checkvenue.php" class="btn">Proceed to Check the Venue</a> 
 
   <a href="SelfAudit.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
