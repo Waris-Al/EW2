@@ -42,11 +42,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
   <title>A HUGE Welcome From Access For All</title>
   <style>
-    
+    /* Add styles for a visually appealing homepage */
     body {
-      font-family: Arial, sans-serif;
+      background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+      font-family: 'Alkatra', sans-serif;
       text-align: center;
       background-color: #f2f2f2;
     }
@@ -65,24 +67,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
       text-decoration: none;
       margin-top: 20px;
     }
-
-    body {
-          font-family: 'Alkatra', sans-serif;
-        background: url("https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
   </style>
 </head>
 <body>
-  <h1>Your have successfully Logged In!</h1>
+  <h1>You have successfully Logged In!</h1>
   
   <a href="Checkvenuelog.php" class="btn">Proceed to Check the Venue</a> 
 
   <a href="SelfAudit.php?company=<?php echo $test?>&type=<?php echo $test2 ?>" class="btn">Proceed to Audit</a> 
-
-
-
-<?php require("Footer.php");?>

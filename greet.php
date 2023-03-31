@@ -11,13 +11,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>A HUGE Welcome From Access For All</title>
-  <style>
+  <style> 
+    /* Add styles for a visually appealing homepage */
     body {
-      font-family: Arial, sans-serif;
+      background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+      font-family: Alkatra, sans-serif;
       text-align: center;
       background-color: #f2f2f2;
     }
@@ -37,10 +40,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
       margin-top: 20px;
     }
   </style>
+    <link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
 </head>
 <body>
-  <h1>Your Registration has been completed</h1>
-  <?php 
+  <h1>Your Registration has been completed</h1><?php 
   $comname = $_GET['company']; 
   $type = $_GET['type']; 
 
@@ -51,9 +54,6 @@ $_SESSION['type'] = $type;
 ?>
   <a href="SelfAudit.php?company=<?php echo $comname?>&type=<?php echo $type ?>" class="btn">Proceed to the Audit</a>
 
-
-
-<?php require("Footer.php");?>
 
 
 

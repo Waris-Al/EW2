@@ -8,33 +8,41 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- latest compiled and  CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" type="text/css">
-        <!-- jquery library -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <!-- Latest compiled and minified javascript -->
-        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <!-- External CSS -->
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="row justify-content-center align-items-center" style="height: 100vh;">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header bg-primary text-white">Logged Out</div>
-                        <div class="card-body">
-                            <p class="card-text">You have been logged out. <a href="login.php">Login again.</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
+  <title>A HUGE Welcome From Access For All</title>
+  <style>
+    /* Add styles for a visually appealing homepage */
+    body {
+      background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+      font-family: 'Alkatra', sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
 
-<?php require("Footer.php");?>
+    h1 {
+      font-size: 36px;
+      margin-top: 50px;
+    }
+
+    .btn {
+      background-color: #4285F4;
+      border-radius: 40px;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>You Have Been Logged Out!</h1>
+  
+  <a href="login.php" class="btn">Log in again</a> 
+  <a href="index.php" class="btn">Return to Homepage</a> 
+  </body>
+  </html>
+
+
+

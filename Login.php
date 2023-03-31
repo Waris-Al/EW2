@@ -59,7 +59,7 @@ session_start();
                     <input type="checkbox" class="custom-control-input" id="rememberMe" name="rememberMe">
                     <label class="custom-control-label" for="rememberMe">Remember me</label>
                   </div>
-                  <a href="#" class="forgot-password-link">Forgot password?</a>
+
                 </div>
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-primary btn-lg w-100">Log in</button>

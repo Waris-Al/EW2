@@ -76,4 +76,3 @@
 
 
 
-<?php require("Footer.php");?>

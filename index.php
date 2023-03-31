@@ -15,23 +15,24 @@ else
   $welcomemessage = "A BIG Hello From Everybody Welcome!";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Welcome to Access For All</title>
+  <link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
   <style>
+    
+    /* Add styles for a visually appealing homepage */
     body {
       color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'Alkatra', sans-serif;
     text-align: center;
     background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
-        top: -20px;
-        
+       
   
 }
 .content {
@@ -43,8 +44,6 @@ else
     margin-right: auto;
     border-radius: 10px;
     color: #000;
-    background-color: rgba(255, 255, 255, 0.7);
-
 }
 .content p {
     color: #000;
@@ -84,7 +83,7 @@ p {
     flex-wrap: wrap;
     margin-top: 3em;
     position: relative;
-        top: -60px;
+        top: -80px;
         
 }
 
@@ -117,12 +116,14 @@ p {
     font-size: 1em;
 }
   </style>
+  
 </head>
 
 <body>
-  <img src="logo.png" style= " width:200px; position: fixed;left: -5px;top: 58px;" >
+  
+ 
   <div class="content">
-    <h1>A BIG Hello From Access and Inclusion UK!</h1>
+    <h2><?php echo $welcomemessage ?></h2>
     <p>We are committed to creating a welcoming environment for everyone, including those with accessibility needs. Join our community today and start exploring!</p>
     
     <!-- Add more content here -->
@@ -140,9 +141,10 @@ p {
 
 
   <div class="feature">
-    <img src="https://images.pexels.com/photos/2610962/pexels-photo-2610962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Connect with Others">
+    <img src="https://images.pexels.com/photos/2610962/pexels-photo-2610962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Join us">
     <h3>Support The Movement</h3>
     <p>Join our community of businesses committed to accessibility and inclusivity. Share your experiences and learn from others.</p>
+    <br>
     <a href="details.php" class="btn" title="Register with us">Join Now</a>
   </div>
 
@@ -150,10 +152,13 @@ p {
     <img src="https://images.pexels.com/photos/4063789/pexels-photo-4063789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Raising Awareness">
     <h3>Raising Awareness</h3>
     <p>Help us promote accessibility and inclusivity by joining us on our journey to an open, more accessible world. Together, we can make a difference.</p>
-    <a href="Aboutus.php" class="btn">About us</a>
+    <a href="Aboutus.php" class="btn" title="Learn More Here">About us</a>
   </div>
 </div>
-<style>
-
-</style>
+</body>
+</html>
+<br>
+<br>
+<br>
+<br>
 <?php require("Footer.php");?>

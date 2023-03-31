@@ -1,22 +1,19 @@
 <?php
 session_start();
+include("NavbarLoggedin.php");
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-  // display the navbar with the logout link
-  include 'NavbarLoggedin.php';
-} else {
-  // display the default navbar
-  include 'NavigationBar.php';
-}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Alkatra" rel="stylesheet"> <!-- link to Google Fonts -->
   <title>A HUGE Welcome From Access For All</title>
   <style>
+    /* Add styles for a visually appealing homepage */
     body {
-      font-family: Arial, sans-serif;
+      background-image: url('https://images.squarespace-cdn.com/content/v1/60eecb626b2fe13816bc167f/74cc05fb-67ee-4fc6-934a-8efcec12af5b/winnats-pass-tim+hill+pixaby.jpg');
+      font-family: 'Alkatra', sans-serif;
       text-align: center;
       background-color: #f2f2f2;
     }
@@ -42,8 +39,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   
   <a href="logout.php" class="btn">Log out</a> 
 
-
-
-<?php require("Footer.php");?>
-
+  </body>
+  </html>
 

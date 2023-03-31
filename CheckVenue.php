@@ -188,7 +188,6 @@ if (isset($_POST['save'])) {
 </head>
 
 <body>
-  <img src="logo.png" style=" width:200px; position: fixed;left: -5px;top: 58px;">
   <div class="dbtent translucent-box">
     <div class="dbtainer">
       <h2 class="mb-3">Search Filters</h2>

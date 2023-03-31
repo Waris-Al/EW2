@@ -16,6 +16,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     
   <style>
   body {
+    backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.5);
+    
     font-family: 'Alkatra', sans-serif;
     background-color: #f2f2f2;
     color: #fff;
@@ -23,12 +26,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   }
 
   .intro, .about, .why-needed, .what-do, .what-do-get {
+    backdrop-filter: blur(5px);
     margin-bottom: 50px;
     text-align: center;
     padding: 30px 0;
+
   }
 
   .intro img, .about img, .why-needed img, .what-do img, .what-do-get img {
+    
+    
     display: block;
     margin: auto;
     width: 750px;
@@ -79,6 +86,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
   
   </head>
   <body>
+ 
     <section class="intro">
       <img src="https://images.pexels.com/photos/2026764/pexels-photo-2026764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 1">
       <div class="intro-text">
@@ -121,5 +129,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
       <div class="what-do-get-content">
         <h2>What do I get?</h2>
         <p>Not only does creating a listing give you a unique URL to share with your target audiences, it also generates an exclusive QR code to display around your venue, enabling you to provide access information for your visitors when and where they need it.</p>
+</section>
+      </body>
+        </html>
 
     <?php include("Footer.php");?>

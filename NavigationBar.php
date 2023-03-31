@@ -16,7 +16,9 @@
 <body class="bgColor">
     <header>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a class="navbar-brand"style="color:white ">Access and Inclusion UK</a>
+    <img src="https://accessandinclusion.com/wp-content/uploads/2022/11/logowhite.png" alt="Access and Inclusion Logo" width="100" height="50">
+  
+    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
