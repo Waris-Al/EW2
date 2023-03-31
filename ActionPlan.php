@@ -402,7 +402,7 @@ $string1 .= "'";
 $string1 .= ', "_blank");</script>';
 echo $string1;
 // output JavaScript code to navigate to the "new-page.php" page
-echo "<script>window.location.href = 'auditCreated.php?audit=$file_location';</script>";
+echo "<script>window.location.href = 'auditCreated.php?audit=$pdfLocation';</script>";
 
 echo "\nYour overall Accessibility Score is $totalPercent %";
 
